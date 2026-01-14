@@ -1,9 +1,11 @@
 {
+  "/admin/page": "app/admin/page.js",
   "/api/recommendations/local/route": "app/api/recommendations/local/route.js",
+  "/api/v1/admin/crawl/clear/route": "app/api/v1/admin/crawl/clear/route.js",
+  "/api/v1/admin/crawl/route": "app/api/v1/admin/crawl/route.js",
+  "/api/v1/admin/index/stats/route": "app/api/v1/admin/index/stats/route.js",
+  "/api/v1/admin/metrics/route": "app/api/v1/admin/metrics/route.js",
   "/api/v1/auth/me/route": "app/api/v1/auth/me/route.js",
-  "/api/v1/search/route": "app/api/v1/search/route.js",
-  "/api/v1/suggest/route": "app/api/v1/suggest/route.js",
-  "/discovery/page": "app/discovery/page.js",
   "/landing/page": "app/landing/page.js",
-  "/search/page": "app/search/page.js"
+  "/page": "app/page.js"
 }

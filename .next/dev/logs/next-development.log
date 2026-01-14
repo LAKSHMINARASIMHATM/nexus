@@ -1,237 +1,47 @@
-[00:00:02.773] Server  LOG      ✓ Ready in 1683ms
-[00:00:02.788] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:02.788] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/landing","route":"/landing"}
-[00:00:02.788] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/landing color: rgb(120, 120, 120) color: inherit {"dp":"/landing","o":"http://localhost:3000/landing","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1768357837069}
-[00:00:02.789] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:02.789] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/landing","route":"/landing"}
-[00:00:02.789] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/landing color: rgb(120, 120, 120) color: inherit {"dp":"/landing","o":"http://localhost:3000/landing","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1768357837062}
-[00:00:03.680] Server  LOG     [dotenv@17.2.3] injecting env (0) from .env.local -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
-[00:00:03.684] Server  LOG     [dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  suppress all logs with { quiet: true }
-[00:00:03.685] Server  LOG     Initializing Neon DB pool...
-[00:00:05.810] Server  LOG      ○ Compiling /api/recommendations/local ...
-[00:00:17.780] Server  LOG      ✓ Compiled in 1844ms
-[00:00:18.002] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:19.303] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:19.486] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:19.486] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/landing","route":"/landing"}
-[00:00:19.486] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/landing color: rgb(120, 120, 120) color: inherit {"dp":"/landing","o":"http://localhost:3000/landing","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1768357856440}
-[00:00:24.512] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:24.512] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/landing","route":"/landing"}
-[00:00:24.512] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/landing color: rgb(120, 120, 120) color: inherit {"dp":"/landing","o":"http://localhost:3000/landing","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1768357860594}
-[00:00:31.043] Server  LOG      ✓ Compiled in 1517ms
-[00:00:55.827] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:55.959] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:55.959] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/landing","route":"/landing"}
-[00:00:55.959] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/landing color: rgb(120, 120, 120) color: inherit {"dp":"/landing","o":"http://localhost:3000/landing","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1768357892912}
-[00:02:14.720] Server  LOG      ✓ Compiled in 545ms
-[00:02:15.368] Server  LOG      ✓ Compiled in 238ms
-[00:04:41.300] Server  LOG      ✓ Compiled in 156ms
-[00:04:42.281] Browser ERROR   uncaughtError: ReferenceError: PopularCategories is not defined
-[00:04:42.281] Browser ERROR   uncaughtError: ReferenceError: PopularCategories is not defined
-[00:04:42.761] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:04:42.764] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:04:42.789] Server  LOG      ✓ Compiled in 168ms
-[00:04:42.813] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:04:42.814] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:04:44.117] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:04:44.345] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:04:45.280] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:04:45.280] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/landing","route":"/landing"}
-[00:04:45.280] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/landing color: rgb(120, 120, 120) color: inherit {"dp":"/landing","o":"http://localhost:3000/landing","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1768358121281}
-[00:04:45.286] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:04:45.286] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/landing","route":"/landing"}
-[00:04:45.286] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/landing color: rgb(120, 120, 120) color: inherit {"dp":"/landing","o":"http://localhost:3000/landing","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1768358121576}
-[00:05:16.253] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:05:16.661] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:05:16.661] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/search","route":"/search"}
-[00:05:16.662] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/search?q=education%20learning color: rgb(120, 120, 120) color: inherit {"dp":"/search","o":"http://localhost:3000/search?q=education%20learning","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1768358153621}
-[00:05:17.357] Server  LOG     CacheService initialized (Local Map)
-[00:05:17.437] Server  LOG     Using PostgreSQL for search (Free Tier)
-[00:05:17.441] Server  LOG     Executing full-text search for query: "education learning"
-[00:05:20.082] Server  LOG     SQL executed. Rows: 10
-[00:05:20.500] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\node_modules_b8385114._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:05:20.509] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\[root-of-the-server]__05c28f36._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:05:20.578] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:05:20.598] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\node_modules_next_47651de6._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:05:20.606] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:05:20.610] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:05:20.637] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:05:20.657] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:05:20.678] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:05:20.684] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:05:20.713] Server  ERROR   Failed to log search event: error: invalid input syntax for type uuid: "session_1768358153410_cctw3"
-[00:05:46.105] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:05:46.230] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:05:46.230] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/search","route":"/search"}
-[00:05:46.230] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/search?q=education%20learning color: rgb(120, 120, 120) color: inherit {"dp":"/search","o":"http://localhost:3000/search?q=education%20learning","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1768358183188}
-[00:05:46.835] Server  LOG     Cache hit for query: "education learning"
-[00:05:48.091] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\node_modules_b8385114._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:05:48.153] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\[root-of-the-server]__05c28f36._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:05:48.190] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:05:48.213] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\node_modules_next_47651de6._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:05:48.222] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:05:48.236] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:05:48.242] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:05:48.259] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:05:48.265] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:05:48.266] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:05:48.269] Server  ERROR   Failed to log search event: error: invalid input syntax for type uuid: "session_1768358183327_fksthd"
-[00:06:07.443] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/discovery color: rgb(120, 120, 120) color: inherit {"dp":"/discovery","o":"http://localhost:3000/discovery","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1768358204294}
-[00:06:11.067] Server  LOG     Using PostgreSQL for search (Free Tier)
-[00:06:11.068] Server  LOG     Executing full-text search for query: "Deep Space Bio"
-[00:06:11.107] Server  LOG     Using PostgreSQL for search (Free Tier)
-[00:06:11.109] Server  LOG     Executing full-text search for query: "Deep Space Bio"
-[00:06:11.134] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/search?q=Deep%20Space%20Bio color: rgb(120, 120, 120) color: inherit {"dp":"/search","o":"http://localhost:3000/search?q=Deep%20Space%20Bio","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1768358208004}
-[00:06:13.823] Server  LOG     SQL executed. Rows: 1
-[00:06:13.848] Server  LOG     SQL executed. Rows: 1
-[00:06:15.677] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\node_modules_b8385114._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:06:15.756] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\[root-of-the-server]__05c28f36._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:06:15.830] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:06:15.881] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\node_modules_next_47651de6._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:06:15.920] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:06:15.933] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:06:15.958] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:06:15.965] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:06:15.985] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:06:16.002] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:06:16.011] Server  ERROR   Failed to log search event: error: invalid input syntax for type uuid: "session_1768358207970_5vw9k"
-[00:06:16.030] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\node_modules_b8385114._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:06:16.039] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\[root-of-the-server]__05c28f36._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:06:16.055] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:06:16.059] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\node_modules_next_47651de6._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:06:16.062] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:06:16.074] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:06:16.082] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:06:16.087] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:06:16.091] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:06:16.096] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:06:16.109] Server  ERROR   Failed to log search event: error: invalid input syntax for type uuid: "session_1768358207970_5vw9k"
-[00:09:21.282] Server  LOG      ✓ Compiled in 209ms
-[00:09:23.412] Server  LOG      ✓ Compiled in 267ms
-[00:11:37.557] Server  LOG      ✓ Compiled in 203ms
-[00:11:40.027] Server  LOG      ✓ Compiled in 157ms
-[00:11:41.618] Server  LOG      ✓ Compiled in 168ms
-[00:13:47.276] Server  LOG      ✓ Compiled in 1474ms
-[00:14:55.550] Server  LOG      ✓ Compiled in 208ms
-[00:16:13.613] Server  LOG      ✓ Compiled in 251ms
-[00:17:28.314] Server  LOG      ✓ Compiled in 186ms
-[00:17:36.134] Server  LOG     Using PostgreSQL for search (Free Tier)
-[00:17:36.137] Server  LOG     Executing full-text search for query: "Sustainable Cities"
-[00:17:38.962] Server  LOG     SQL executed. Rows: 4
-[00:17:40.733] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\node_modules_b8385114._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:40.740] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\[root-of-the-server]__05c28f36._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:40.759] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:40.808] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\node_modules_next_47651de6._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:40.823] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:40.830] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:40.834] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:40.836] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:40.840] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:40.842] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:40.849] Server  ERROR   Failed to log search event: error: invalid input syntax for type uuid: "session_1768358207970_5vw9k"
-[00:17:42.433] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/discovery color: rgb(120, 120, 120) color: inherit {"dp":"/discovery","o":"http://localhost:3000/discovery","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1768358899365}
-[00:17:53.026] Server  LOG     Cache hit for query: "Sustainable Cities"
-[00:17:53.083] Server  LOG     Cache hit for query: "Sustainable Cities"
-[00:17:53.126] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/search?q=Sustainable%20Cities color: rgb(120, 120, 120) color: inherit {"dp":"/search","o":"http://localhost:3000/search?q=Sustainable%20Cities","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1768358910023}
-[00:17:54.557] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\node_modules_b8385114._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:54.560] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\[root-of-the-server]__05c28f36._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:54.613] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:54.651] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\node_modules_next_47651de6._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:54.715] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:54.747] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:54.777] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:54.798] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:54.800] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:54.804] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:54.807] Server  ERROR   Failed to log search event: error: invalid input syntax for type uuid: "session_1768358909981_kv9zb"
-[00:17:54.821] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\node_modules_b8385114._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:54.828] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\[root-of-the-server]__05c28f36._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:54.833] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:54.840] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\node_modules_next_47651de6._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:54.843] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:54.849] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:54.852] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:54.853] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:54.861] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:54.863] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:17:54.868] Server  ERROR   Failed to log search event: error: invalid input syntax for type uuid: "session_1768358909981_kv9zb"
-[00:18:36.301] Server  LOG      ✓ Compiled in 178ms
-[00:19:17.893] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/discovery color: rgb(120, 120, 120) color: inherit {"dp":"/discovery","o":"http://localhost:3000/discovery","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1768358994831}
-[00:19:25.302] Server  LOG     Cache hit for query: "Sustainable Cities"
-[00:19:25.361] Server  LOG     Cache hit for query: "Sustainable Cities"
-[00:19:25.440] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/search?q=Sustainable%20Cities color: rgb(120, 120, 120) color: inherit {"dp":"/search","o":"http://localhost:3000/search?q=Sustainable%20Cities","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1768359002315}
-[00:19:26.496] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\node_modules_b8385114._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:26.498] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\[root-of-the-server]__05c28f36._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:26.522] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:26.534] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\node_modules_next_47651de6._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:26.554] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:26.565] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:26.574] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:26.592] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:26.603] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:26.611] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:26.619] Server  ERROR   Failed to log search event: error: invalid input syntax for type uuid: "session_1768359002274_orh17"
-[00:19:27.288] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\node_modules_b8385114._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:27.299] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\[root-of-the-server]__05c28f36._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:27.328] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:27.358] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\node_modules_next_47651de6._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:27.383] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:27.395] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:27.397] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:27.405] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:27.421] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:27.425] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:27.433] Server  ERROR   Failed to log search event: error: invalid input syntax for type uuid: "session_1768359002274_orh17"
-[00:19:27.740] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/discovery color: rgb(120, 120, 120) color: inherit {"dp":"/discovery","o":"http://localhost:3000/discovery","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1768359004680}
-[00:19:29.787] Server  LOG     Cache hit for query: "Sustainable Cities"
-[00:19:29.856] Server  LOG     Cache hit for query: "Sustainable Cities"
-[00:19:30.028] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/search?q=Sustainable%20Cities color: rgb(120, 120, 120) color: inherit {"dp":"/search","o":"http://localhost:3000/search?q=Sustainable%20Cities","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1768359006746}
-[00:19:30.286] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\node_modules_b8385114._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:30.288] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\[root-of-the-server]__05c28f36._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:30.290] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:30.293] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\node_modules_next_47651de6._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:30.298] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:30.328] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:30.342] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:30.356] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:30.363] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:30.369] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:30.375] Server  ERROR   Failed to log search event: error: invalid input syntax for type uuid: "session_1768359006707_vwoe6z"
-[00:19:31.006] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\node_modules_b8385114._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:31.009] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\[root-of-the-server]__05c28f36._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:31.016] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:31.022] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\node_modules_next_47651de6._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:31.027] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:31.035] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:31.041] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:31.051] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:31.071] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:31.090] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:19:31.139] Server  ERROR   Failed to log search event: error: invalid input syntax for type uuid: "session_1768359006707_vwoe6z"
-[00:21:39.220] Server  LOG      ✓ Compiled in 230ms
-[00:22:17.022] Server  LOG     Using PostgreSQL for search (Free Tier)
-[00:22:17.023] Server  LOG     Executing full-text search for query: "Sustainable Citiesj"
-[00:22:18.469] Server  LOG     SQL executed. Rows: 0
-[00:22:19.525] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\node_modules_b8385114._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:22:19.529] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\[root-of-the-server]__05c28f36._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:22:19.532] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:22:19.539] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\node_modules_next_47651de6._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:22:19.544] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:22:19.564] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:22:19.580] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:22:19.589] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:22:19.592] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:22:19.594] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:22:19.597] Server  ERROR   Failed to log search event: error: invalid input syntax for type uuid: "session_1768359006707_vwoe6z"
-[00:22:21.921] Server  LOG     Cache hit for query: "Sustainable Cities"
-[00:22:22.222] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\node_modules_b8385114._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:22:22.227] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\[root-of-the-server]__05c28f36._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:22:22.237] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:22:22.267] Server  ERROR   D:\search-engine-spec\.next\dev\server\chunks\node_modules_next_47651de6._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:22:22.278] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:22:22.289] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:22:22.295] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:22:22.298] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:22:22.300] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:22:22.303] Server  ERROR   D:\search-engine-spec\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:22:22.307] Server  ERROR   Failed to log search event: error: invalid input syntax for type uuid: "session_1768359006707_vwoe6z"
+[00:00:05.999] Server  LOG      ✓ Ready in 4.1s
+[00:00:15.889] Server  LOG      ○ Compiling / ...
+[00:00:24.260] Server  WARN     ⚠ Cross origin request detected from 192.168.56.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+[00:00:24.371] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:28.534] Server  LOG      ○ Compiling /landing ...
+[00:00:32.220] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:33.432] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:33.432] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/landing","route":"/landing"}
+[00:00:33.432] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/landing color: rgb(120, 120, 120) color: inherit {"dp":"/landing","o":"http://192.168.56.1:3000/landing","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1768367835410}
+[00:00:45.275] Server  LOG     [dotenv@17.2.3] injecting env (0) from .env.local -- tip: 👥 sync secrets across teammates & machines: https://dotenvx.com/ops
+[00:00:45.297] Server  LOG     [dotenv@17.2.3] injecting env (0) from .env -- tip: 📡 add observability to secrets: https://dotenvx.com/ops
+[00:00:45.318] Server  LOG     Initializing Neon DB pool...
+[00:00:45.505] Server  LOG      ○ Compiling /api/v1/auth/me ...
+[00:00:52.021] Server  LOG      ○ Compiling /admin ...
+[00:00:56.932] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://192.168.56.1:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1768367858775}
+[00:01:17.066] Server  LOG     🗑️  Clearing crawl queue via API...
+[00:01:17.343] Server  LOG     ✅ Deleted 8258 items from the crawl queue.
+[00:01:22.311] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:23.435] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:01:23.435] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin","route":"/admin"}
+[00:01:23.435] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://192.168.56.1:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1768367884885}
+[00:02:25.163] Server  LOG      ✓ Compiled in 2.1s
+[00:03:10.566] Server  LOG      ✓ Compiled in 627ms
+[00:03:12.194] Server  LOG      ✓ Compiled in 545ms
+[00:03:14.016] Server  LOG      ✓ Compiled in 301ms
+[00:04:33.842] Server  LOG      ✓ Compiled in 409ms
+[00:04:35.671] Server  LOG      ✓ Compiled in 246ms
+[00:04:54.438] Server  LOG      ✓ Compiled in 161ms
+[00:05:53.000] Server  LOG      ✓ Compiled in 319ms
+[00:05:55.150] Server  LOG      ✓ Compiled in 358ms
+[00:05:56.436] Browser ERROR   uncaughtError: ReferenceError: Globe is not defined
+[00:05:57.019] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:05:57.038] Server  LOG      ✓ Compiled in 277ms
+[00:05:57.655] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://192.168.56.1:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1768368159516}
+[00:05:59.212] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:05:59.378] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:05:59.378] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin","route":"/admin"}
+[00:05:59.379] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://192.168.56.1:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1768368161700}
+[00:06:52.290] Server  LOG      ✓ Compiled in 262ms
+[00:06:54.364] Server  LOG      ✓ Compiled in 331ms
+[00:07:16.816] Server  LOG      ✓ Compiled in 348ms
+[00:07:19.639] Server  LOG      ✓ Compiled in 1002ms
+[00:07:54.358] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:07:54.522] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:07:54.522] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin","route":"/admin"}
+[00:07:54.522] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://192.168.56.1:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1768368276876}

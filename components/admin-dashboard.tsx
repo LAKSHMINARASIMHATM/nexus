@@ -7,6 +7,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import {
   LineChart,
   Line,
@@ -24,6 +27,41 @@ export function AdminDashboard() {
   const [stats, setStats] = useState<any>(null)
   const [metrics, setMetrics] = useState<any>(null)
   const [loading, setLoading] = useState(true)
+
+  // Experiment State
+  interface Experiment {
+    id: number
+    name: string
+    description: string
+    traffic: number
+    daysRemaining: number
+    lift: string | null
+    impact: string | null
+  }
+
+  const [experiments, setExperiments] = useState<Experiment[]>([
+    { id: 1, name: "PageRank Weight Increase", description: "Testing PageRank weight 0.2 → 0.3", traffic: 10, daysRemaining: 3, lift: "+0.7%", impact: null },
+    { id: 2, name: "BERT Tiny Reranker", description: "Comparing BERT vs LightGBM reranker", traffic: 5, daysRemaining: 5, lift: null, impact: "+12ms" }
+  ])
+  const [isExperimentDialogOpen, setIsExperimentDialogOpen] = useState(false)
+  const [newExperiment, setNewExperiment] = useState({ name: "", description: "", traffic: "5" })
+
+  const handleCreateExperiment = () => {
+    setExperiments([
+      ...experiments,
+      {
+        id: Date.now(),
+        name: newExperiment.name,
+        description: newExperiment.description,
+        traffic: parseInt(newExperiment.traffic),
+        daysRemaining: 7, // Default to 7 days
+        lift: null, // No data yet
+        impact: null
+      }
+    ])
+    setIsExperimentDialogOpen(false)
+    setNewExperiment({ name: "", description: "", traffic: "5" })
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -76,45 +114,9 @@ export function AdminDashboard() {
   ]
 
 
-  const handleCrawl = async () => {
-    try {
-      const res = await fetch("/api/v1/admin/crawl", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        // For now, triggering a crawl on a default set or re-crawling pending
-        // ideally, this button would be "Start Worker" or take specific URLs
-        // But per request, we just trigger it. Let's send a dummy list or just start the process if the backend supports it.
-        // Actually, the current API expects URLs. Let's make this button 'Seed & Crawl' or just 'Start Processing'
-        // Since the user asked for "controls", let's assume valid implementation.
-        // For this iteration, I'll make it trigger a crawl for the pending queue if possible,
-        // but the current API only accepts NEW urls.
-        // I'll leave a comment and implement a simple "add test url" for demo,
-        // OR better: Trigger the worker? No, that's a background process.
-        // Let's make it "Seed 50 Popular URLs" for testing controls.
-        body: JSON.stringify({ urls: ["https://example.com"], priority: "high" }),
-      })
-      if (res.ok) {
-        // Trigger specific notification or refresh
-        alert("Crawl Triggered")
-      }
-    } catch (e) {
-      console.error(e)
-    }
-  }
 
-  const handleClearQueue = async () => {
-    if (!confirm("Are you sure you want to clear the entire crawl queue?")) return
-    try {
-      const res = await fetch("/api/v1/admin/crawl/clear", { method: "DELETE" })
-      if (res.ok) {
-        alert("Queue Cleared")
-        // Force refresh
-        window.location.reload()
-      }
-    } catch (e) {
-      console.error(e)
-    }
-  }
+
+
 
   return (
     <div className="min-h-screen bg-background p-6">
@@ -134,8 +136,7 @@ export function AdminDashboard() {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{stats?.index.total_documents.toLocaleString()}</div>
-              {/* <p className="text-xs text-muted-foreground mt-1">{stats?.index.total_size_gb} GB total size</p> */}
-              {/* Using mock size for now as it's static in service */}
+              <p className="text-xs text-muted-foreground mt-1">{stats?.index.total_size_gb} GB total size</p>
             </CardContent>
           </Card>
           {/* ... Other stats ... */}
@@ -183,9 +184,10 @@ export function AdminDashboard() {
         <Tabs defaultValue="crawler" className="space-y-4">
           <TabsList>
             <TabsTrigger value="performance">Performance</TabsTrigger>
-            <TabsTrigger value="crawler">Crawler</TabsTrigger>
+
             <TabsTrigger value="index">Index Health</TabsTrigger>
             <TabsTrigger value="experiments">Experiments</TabsTrigger>
+
           </TabsList>
 
           {/* ... Performance Tab Content (Existing) ... */}
@@ -318,66 +320,7 @@ export function AdminDashboard() {
             </div>
           </TabsContent>
 
-          {/* Crawler Tab */}
-          <TabsContent value="crawler" className="space-y-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Crawler Statistics</CardTitle>
-                <CardDescription>Real-time queue status</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <div>
-                    <div className="text-2xl font-bold">{metrics?.metrics.crawler.urls_crawled.toLocaleString()}</div>
-                    <p className="text-sm text-muted-foreground">URLs Processed</p>
-                  </div>
 
-                  <div>
-                    <div className="text-2xl font-bold">{metrics?.metrics.crawler.urls_queued.toLocaleString()}</div>
-                    <p className="text-sm text-muted-foreground">URLs Pending</p>
-                  </div>
-
-                  <div>
-                    <div className="text-2xl font-bold">
-                      {(metrics?.metrics.crawler.success_rate * 100).toFixed(1)}%
-                    </div>
-                    <p className="text-sm text-muted-foreground">Success Rate</p>
-                  </div>
-
-                  <div>
-                    <div className="text-2xl font-bold">{metrics?.metrics.crawler.bandwidth_mbps} Mbps</div>
-                    <p className="text-sm text-muted-foreground">Bandwidth</p>
-                  </div>
-                </div>
-
-                <div className="mt-6 space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span>Average Fetch Time</span>
-                    <span className="font-medium">{metrics?.metrics.crawler.avg_fetch_time_ms}ms</span>
-                  </div>
-
-                  <Progress value={(metrics?.metrics.crawler.success_rate || 0) * 100} className="h-2" />
-                </div>
-              </CardContent>
-            </Card>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-base">Control Center</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground mb-4">Manage the crawler state.</p>
-                  <Button className="w-full mb-2" size="sm" onClick={handleCrawl}>
-                    Test Crawl (Mock)
-                  </Button>
-                  <Button className="w-full" size="sm" variant="destructive" onClick={handleClearQueue}>
-                    Clear Crawl Queue
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
-          </TabsContent>
 
           {/* Index Health Tab */}
           <TabsContent value="index" className="space-y-4">
@@ -472,40 +415,86 @@ export function AdminDashboard() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between p-4 border rounded-lg">
-                    <div>
-                      <h4 className="font-medium">PageRank Weight Increase</h4>
-                      <p className="text-sm text-muted-foreground">Testing PageRank weight 0.2 → 0.3</p>
-                      <div className="flex gap-2 mt-2">
-                        <Badge>10% traffic</Badge>
-                        <Badge variant="outline">3 days remaining</Badge>
+                  {experiments.map((exp) => (
+                    <div key={exp.id} className="flex items-center justify-between p-4 border rounded-lg">
+                      <div>
+                        <h4 className="font-medium">{exp.name}</h4>
+                        <p className="text-sm text-muted-foreground">{exp.description}</p>
+                        <div className="flex gap-2 mt-2">
+                          <Badge>{exp.traffic}% traffic</Badge>
+                          <Badge variant="outline">{exp.daysRemaining} days remaining</Badge>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        {exp.lift && (
+                          <>
+                            <div className="text-sm text-muted-foreground">NDCG@10 Lift</div>
+                            <div className="text-2xl font-bold text-green-600">{exp.lift}</div>
+                          </>
+                        )}
+                        {exp.impact && (
+                          <>
+                            <div className="text-sm text-muted-foreground">Latency Impact</div>
+                            <div className="text-2xl font-bold text-orange-600">{exp.impact}</div>
+                          </>
+                        )}
+                        {!exp.lift && !exp.impact && (
+                          <div className="text-sm text-muted-foreground italic">Collecting data...</div>
+                        )}
                       </div>
                     </div>
-                    <div className="text-right">
-                      <div className="text-sm text-muted-foreground">NDCG@10 Lift</div>
-                      <div className="text-2xl font-bold text-green-600">+0.7%</div>
-                    </div>
-                  </div>
+                  ))}
 
-                  <div className="flex items-center justify-between p-4 border rounded-lg">
-                    <div>
-                      <h4 className="font-medium">BERT Tiny Reranker</h4>
-                      <p className="text-sm text-muted-foreground">Comparing BERT vs LightGBM reranker</p>
-                      <div className="flex gap-2 mt-2">
-                        <Badge>5% traffic</Badge>
-                        <Badge variant="outline">5 days remaining</Badge>
+                  <Dialog open={isExperimentDialogOpen} onOpenChange={setIsExperimentDialogOpen}>
+                    <DialogTrigger asChild>
+                      <Button className="w-full">
+                        <Globe className="mr-2 h-4 w-4" />
+                        Create New Experiment
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>Create New Experiment</DialogTitle>
+                        <DialogDescription>
+                          Launch a new A/B test to specific traffic segments.
+                        </DialogDescription>
+                      </DialogHeader>
+                      <div className="grid gap-4 py-4">
+                        <div className="grid gap-2">
+                          <Label htmlFor="name">Experiment Name</Label>
+                          <Input
+                            id="name"
+                            value={newExperiment.name}
+                            onChange={(e) => setNewExperiment({ ...newExperiment, name: e.target.value })}
+                            placeholder="e.g. New Ranking Algorithm"
+                          />
+                        </div>
+                        <div className="grid gap-2">
+                          <Label htmlFor="desc">Description</Label>
+                          <Input
+                            id="desc"
+                            value={newExperiment.description}
+                            onChange={(e) => setNewExperiment({ ...newExperiment, description: e.target.value })}
+                            placeholder="What are you testing?"
+                          />
+                        </div>
+                        <div className="grid gap-2">
+                          <Label htmlFor="traffic">Traffic Percentage</Label>
+                          <Input
+                            id="traffic"
+                            type="number"
+                            value={newExperiment.traffic}
+                            onChange={(e) => setNewExperiment({ ...newExperiment, traffic: e.target.value })}
+                            placeholder="5"
+                          />
+                        </div>
                       </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-sm text-muted-foreground">Latency Impact</div>
-                      <div className="text-2xl font-bold text-orange-600">+12ms</div>
-                    </div>
-                  </div>
-
-                  <Button className="w-full">
-                    <Globe className="mr-2 h-4 w-4" />
-                    Create New Experiment
-                  </Button>
+                      <DialogFooter>
+                        <Button variant="outline" onClick={() => setIsExperimentDialogOpen(false)}>Cancel</Button>
+                        <Button onClick={handleCreateExperiment}>Launch Experiment</Button>
+                      </DialogFooter>
+                    </DialogContent>
+                  </Dialog>
                 </div>
               </CardContent>
             </Card>
