@@ -1,0 +1,9 @@
+{
+  "/api/recommendations/local/route": "app/api/recommendations/local/route.js",
+  "/api/v1/auth/me/route": "app/api/v1/auth/me/route.js",
+  "/api/v1/search/route": "app/api/v1/search/route.js",
+  "/api/v1/suggest/route": "app/api/v1/suggest/route.js",
+  "/discovery/page": "app/discovery/page.js",
+  "/landing/page": "app/landing/page.js",
+  "/search/page": "app/search/page.js"
+}

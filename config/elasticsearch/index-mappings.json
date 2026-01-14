@@ -1,0 +1,73 @@
+{
+    "settings": {
+        "number_of_shards": 64,
+        "number_of_replicas": 2,
+        "refresh_interval": "30s",
+        "index": {
+            "codec": "best_compression",
+            "max_result_window": 10000
+        },
+        "analysis": {
+            "analyzer": {
+                "custom_analyzer": {
+                    "type": "custom",
+                    "tokenizer": "standard",
+                    "filter": [
+                        "lowercase",
+                        "porter_stem",
+                        "stop",
+                        "asciifolding"
+                    ]
+                },
+                "ngram_analyzer": {
+                    "type": "custom",
+                    "tokenizer": "standard",
+                    "filter": [
+                        "lowercase",
+                        "ngram_filter"
+                    ]
+                }
+            },
+            "filter": {
+                "ngram_filter": {
+                    "type": "ngram",
+                    "min_gram": 2,
+                    "max_gram": 15
+                }
+            }
+        }
+    },
+    "mappings": {
+        "properties": {
+            "url": {"type": "keyword"},
+            "canonical_url": {"type": "keyword"},
+            "title": {
+                "type": "text",
+                "analyzer": "custom_analyzer",
+                "fields": {
+                    "raw": {"type": "keyword"},
+                    "ngram": {"type": "text", "analyzer": "ngram_analyzer"}
+                },
+                "term_vector": "with_positions_offsets"
+            },
+            "body": {
+                "type": "text",
+                "analyzer": "custom_analyzer",
+                "term_vector": "with_positions_offsets",
+                "store": false
+            },
+            "meta_description": {"type": "text", "analyzer": "custom_analyzer"},
+            "anchor_texts": {"type": "text", "analyzer": "custom_analyzer"},
+            "headings": {"type": "text", "analyzer": "custom_analyzer"},
+            "doc_length": {"type": "integer"},
+            "pagerank": {"type": "float"},
+            "language": {"type": "keyword"},
+            "domain": {"type": "keyword"},
+            "crawl_timestamp": {"type": "date"},
+            "content_hash": {"type": "keyword"},
+            "inbound_links": {"type": "integer"},
+            "outbound_links": {"type": "integer"},
+            "structured_data": {"type": "object", "enabled": true}
+        }
+    }
+}

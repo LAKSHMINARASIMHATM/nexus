@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///D:/search-engine-spec/app/loading.tsx"],"sourcesContent":["export default function Loading() {\r\n    return (\r\n        <div className=\"flex h-screen w-full items-center justify-center bg-background\">\r\n            <div className=\"space-y-4 text-center\">\r\n                <div className=\"mx-auto h-12 w-12 animate-spin rounded-full border-4 border-foreground/20 border-t-foreground\" />\r\n                <p className=\"font-mono text-sm tracking-widest text-foreground/60 animate-pulse\">\r\n                    INITIALIZING NEXUS...\r\n                </p>\r\n            </div>\r\n        </div>\r\n    );\r\n}\r\n"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACpB,qBACI,8OAAC;QAAI,WAAU;kBACX,cAAA,8OAAC;YAAI,WAAU;;8BACX,8OAAC;oBAAI,WAAU;;;;;;8BACf,8OAAC;oBAAE,WAAU;8BAAqE;;;;;;;;;;;;;;;;;AAMlG"}}]
+}

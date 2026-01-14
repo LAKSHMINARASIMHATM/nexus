@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Recommendation API</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input {
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        button {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .results {
+            margin-top: 30px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #667eea;
+            font-size: 18px;
+        }
+
+        .error {
+            background: #fee;
+            border: 2px solid #fcc;
+            padding: 15px;
+            border-radius: 6px;
+            color: #c33;
+        }
+
+        .recommendation {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 6px;
+            display: grid;
+            grid-template-columns: 50px 1fr 100px 100px;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .rank {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .item-id {
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+        }
+
+        .score-bar {
+            background: #e0e0e0;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .score-fill {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            height: 100%;
+            transition: width 0.5s ease;
+        }
+
+        .confidence {
+            text-align: center;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .confidence.high {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .confidence.medium {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .confidence.low {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🤖 AI Recommendation System</h1>
+        <p class="subtitle">Testing the RecommendationClient API</p>
+
+        <div
+            style="background: #e3f2fd; border-left: 4px solid #2196f3; padding: 15px; margin-bottom: 20px; border-radius: 4px;">
+            <p style="margin: 0; color: #1976d2; font-size: 14px;">
+                <strong>ℹ️ Note:</strong> This connects to the <strong>external AI Recommendation System</strong>
+                deployed at <a href="https://ai-recommendation-system-lt3w.onrender.com" target="_blank"
+                    style="color: #1565c0;">Render.com</a>.
+                <br><br>
+                <strong>Dataset:</strong> MovieLens (movies & ratings) - User IDs range from 1-610, Item IDs range from
+                1-9724.
+                <br>
+                <strong>Not connected to:</strong> Your local search engine database.
+            </p>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="userId">User ID</label>
+                <input type="number" id="userId" value="1" min="1">
+            </div>
+            <div class="control-group">
+                <label for="k">Number of Recommendations</label>
+                <input type="number" id="k" value="10" min="1" max="50">
+            </div>
+        </div>
+
+        <button onclick="fetchRecommendations()" id="fetchBtn">Get Recommendations</button>
+
+        <div id="results" class="results"></div>
+    </div>
+
+    <script>
+        async function fetchRecommendations() {
+            const userId = document.getElementById('userId').value;
+            const k = document.getElementById('k').value;
+            const resultsDiv = document.getElementById('results');
+            const fetchBtn = document.getElementById('fetchBtn');
+
+            // Show loading
+            resultsDiv.innerHTML = '<div class="loading">⏳ Loading recommendations...</div>';
+            fetchBtn.disabled = true;
+
+            try {
+                const response = await fetch(`/api/recommendations?userId=${userId}&k=${k}`);
+                const data = await response.json();
+
+                if (!response.ok || !data.success) {
+                    throw new Error(data.error || 'Failed to fetch recommendations');
+                }
+
+                displayResults(data.data);
+            } catch (error) {
+                resultsDiv.innerHTML = `<div class="error">❌ Error: ${error.message}</div>`;
+            } finally {
+                fetchBtn.disabled = false;
+            }
+        }
+
+        function displayResults(data) {
+            const resultsDiv = document.getElementById('results');
+            const recommendations = data.recommendations;
+
+            if (!recommendations || recommendations.length === 0) {
+                resultsDiv.innerHTML = '<div class="error">No recommendations found</div>';
+                return;
+            }
+
+            let html = '<h2>Recommendations for User ' + data.user_id + '</h2>';
+
+            recommendations.forEach((rec, index) => {
+                const confidence = rec.score > 0.9 ? 'high' : rec.score > 0.7 ? 'medium' : 'low';
+                const confidenceLabel = rec.score > 0.9 ? 'Very High' : rec.score > 0.7 ? 'High' : rec.score > 0.5 ? 'Medium' : 'Low';
+
+                html += `
+                    <div class="recommendation">
+                        <div class="rank">${index + 1}</div>
+                        <div>
+                            <div class="item-id">Item ${rec.item_id}</div>
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: ${rec.score * 100}%"></div>
+                            </div>
+                        </div>
+                        <div style="text-align: center;">
+                            <strong>${rec.score.toFixed(4)}</strong>
+                        </div>
+                        <div class="confidence ${confidence}">${confidenceLabel}</div>
+                    </div>
+                `;
+            });
+
+            // Calculate stats
+            const avgScore = recommendations.reduce((sum, r) => sum + r.score, 0) / recommendations.length;
+            const maxScore = Math.max(...recommendations.map(r => r.score));
+
+            html += `
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-value">${recommendations.length}</div>
+                        <div class="stat-label">Total Items</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">${avgScore.toFixed(4)}</div>
+                        <div class="stat-label">Average Score</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">${maxScore.toFixed(4)}</div>
+                        <div class="stat-label">Top Score</div>
+                    </div>
+                </div>
+            `;
+
+            resultsDiv.innerHTML = html;
+        }
+
+        // Load recommendations on page load
+        window.addEventListener('load', () => {
+            fetchRecommendations();
+        });
+    </script>
+</body>
+
+</html>

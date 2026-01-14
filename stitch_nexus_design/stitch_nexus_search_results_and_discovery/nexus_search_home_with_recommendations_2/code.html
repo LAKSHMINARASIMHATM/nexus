@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>NEXUS | AI-Powered Search</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FFFFFF",
+                        "background-dark": "#0A0A0A",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                        "2xl": "24px",
+                    },
+                },
+            },
+        };
+    </script>
+    <style type="text/tailwindcss">.glass-heavy {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.12)
+    }
+.glass-nav {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1)
+    }
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1)
+    }
+.glass-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translatey(-4px);
+    border-color: rgba(255, 255, 255, 0.2)
+    }
+.bg-immersive {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuCzvWkwLkXUGNtZtMCxlKE9sB8p4T6GFeGsaauWILdeaOO_fQaTfmmIa-VvzyPf6kxHkxEMBl3FHz3OuZyGqcmgTPfFBqwoImUa7b7Fkk6aO7SZNPoQRjQVpuFkeFvmPPdP1oaq-n4O6-4fmLsVILDealo_wdYP4428rmP_HUe4AlQ6T-L0mhAAxHHnCKGaaaw_vP4VjMxp-Efa_vPyiRIRnZWo5iHu0MXeBiDmmHgzAGpcZB6eFAnQtfyCkqYlwlUaDSQWKn8btReo);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed
+    }
+.text-glow {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3)
+    }</style>
+</head>
+
+<body class="font-display bg-background-dark text-white min-h-screen transition-colors duration-300 bg-immersive">
+    <nav class="fixed top-0 w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-8">
+                <span class="text-2xl font-bold tracking-tighter text-white">NEXUS</span>
+                <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+                    <a class="hover:text-white transition-colors flex items-center gap-1.5" href="#"><span
+                            class="material-symbols-outlined text-[20px]">search</span>All</a>
+                    <a class="hover:text-white transition-colors flex items-center gap-1.5" href="#"><span
+                            class="material-symbols-outlined text-[20px]">image</span>Images</a>
+                    <a class="hover:text-white transition-colors flex items-center gap-1.5" href="#"><span
+                            class="material-symbols-outlined text-[20px]">newspaper</span>News</a>
+                    <a class="hover:text-white transition-colors flex items-center gap-1.5" href="#"><span
+                            class="material-symbols-outlined text-[20px]">play_circle</span>Videos</a>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button class="p-2 rounded-full hover:bg-white/10 transition-colors">
+                    <span class="material-symbols-outlined">light_mode</span>
+                </button>
+                <div
+                    class="h-8 w-8 rounded-full bg-white/10 flex items-center justify-center text-xs font-semibold ring-1 ring-white/20">
+                    AS
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main class="pt-40 pb-20 px-6">
+        <div class="max-w-3xl mx-auto text-center mb-24">
+            <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-10 text-white text-glow">
+                What can I help you find today?
+            </h1>
+            <div class="relative group">
+                <div
+                    class="absolute -inset-1.5 bg-white/10 rounded-[30px] blur-xl opacity-0 group-hover:opacity-100 transition duration-700">
+                </div>
+                <div class="relative glass-heavy rounded-2xl flex items-center px-6 py-5 shadow-2xl">
+                    <span class="material-symbols-outlined text-slate-300 scale-110">search</span>
+                    <input autofocus=""
+                        class="w-full bg-transparent border-none focus:ring-0 text-xl px-4 placeholder:text-slate-400 text-white font-light"
+                        placeholder="Search the nexus of information..." type="text" />
+                    <div class="flex items-center gap-4">
+                        <button class="p-2 text-slate-300 hover:text-white transition-colors">
+                            <span class="material-symbols-outlined">mic</span>
+                        </button>
+                        <button class="p-2 text-slate-300 hover:text-white transition-colors">
+                            <span class="material-symbols-outlined">photo_camera</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 flex flex-wrap justify-center gap-3">
+                <span
+                    class="text-xs font-bold text-slate-300/80 uppercase tracking-[0.2em] mr-2 py-1.5">Trending:</span>
+                <button class="px-4 py-1.5 text-sm rounded-full glass-card hover:bg-white/20">Quantum Computing</button>
+                <button class="px-4 py-1.5 text-sm rounded-full glass-card hover:bg-white/20">Mars Mission 2024</button>
+                <button class="px-4 py-1.5 text-sm rounded-full glass-card hover:bg-white/20">Generative Design</button>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-2xl font-semibold flex items-center gap-3 text-white">
+                    <span class="material-symbols-outlined text-white">auto_awesome</span>
+                    Recommended for You
+                </h2>
+                <button
+                    class="text-sm font-medium text-slate-300 hover:text-white flex items-center gap-1 transition-colors group">
+                    View all <span
+                        class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                </button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="group glass-card rounded-2xl overflow-hidden shadow-2xl">
+                    <div class="aspect-video overflow-hidden">
+                        <img alt="Artificial Intelligence representation"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5eesZHcFixSzwJjhoSTqywlLa0QophyjyDCacd_qB7R2D_Ta73qYwhr3ZxOFsVWrUC-4tdHf-fg0TIsC-vSsseuD8sTFQ2QwAcmP_2uQWhxMF-wvo1EBqc2vjENWh8XH5CUcQwxk-heQuTAszDSoB06WHBpA1418SUorcDrvqSZA_MZ7-71-GZC_bVSX41BN_kS1fKeB_dLdzIJJkICIj7-i2VEGUnnSKs8_NzwASuy5nrZ5aGWL_Mm1aCaYZKnuDTIGcxeQHONaI" />
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span
+                                class="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider bg-white/10 text-white rounded">Technology</span>
+                            <span class="text-xs text-slate-400">5 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-white group-hover:text-white/80 transition-colors">The
+                            Future of AI: Beyond Large Language Models</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed line-clamp-2">Exploring the next frontier of
+                            artificial intelligence and how multi-modal agents are reshaping our digital world.</p>
+                    </div>
+                </div>
+                <div class="group glass-card rounded-2xl overflow-hidden shadow-2xl">
+                    <div class="aspect-video overflow-hidden">
+                        <img alt="Global networking concept"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqvlZTXsUIPO1JCJMgUe04Ks1IwJk6mOeNbzLNxwy48b3cYfEUUpnDJptqwGYX7XoreJ61PSZVIOCx99-KqndAFM_WCX1FJLc5rD6tI3K5SelQQx_n02yXnZlCKgSnHax_sayRecMJrDrT70dhv7gSLB5avSqjxYrFdCkdo5UxWxt9xWYsEdKkGbHWuWV0df5mTVROU2jRcWU9q5f-XG9XvBmBATYwTPDnc4N1UOGZ_C0-buuoN75SP9QTt4e7iYOtgj6Di1ib9hVo" />
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span
+                                class="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider bg-white/10 text-white rounded">Science</span>
+                            <span class="text-xs text-slate-400">12 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-white group-hover:text-white/80 transition-colors">Deep
+                            Sea Exploration: The Silent Frontier</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed line-clamp-2">New discoveries at the bottom of
+                            the Mariana Trench reveal life forms previously thought impossible.</p>
+                    </div>
+                </div>
+                <div class="group glass-card rounded-2xl overflow-hidden shadow-2xl">
+                    <div class="aspect-video overflow-hidden">
+                        <img alt="Modern minimalist architecture"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5k2Yhrx__LD2updQ0Sq40wjOEVYddxTVl4HPXcqJ9Q3d_1YbkjaJ84Wq0UBZs7naiYd0SKXkV8Wng9n1jb2fJGEuVB3rrTb--kexzM7uxPal7QRVSXNYHDqiOyUEuNMAhdsk8fCrwJBCH-kXRRaYrL2G6xTZ3-evLBnSmoZ1xliXJNUpwHkO1xqwGNjVXO2feBNiQ4PE_rRSFFWDeR0zE9QNFa3i3cjX7dnI5FvEuHidTXfr8EOUrSorImd-iRsE_Gp2L9df-9Gpg" />
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span
+                                class="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider bg-white/10 text-white rounded">Design</span>
+                            <span class="text-xs text-slate-400">8 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-white group-hover:text-white/80 transition-colors">
+                            Sustainable Urbanism in 2024</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed line-clamp-2">How modern cities are integrating
+                            nature to fight rising temperatures and improve resident well-being.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-20 pt-16 border-t border-white/10">
+                <h3 class="text-sm font-bold uppercase tracking-[0.3em] text-slate-300 mb-10 text-center">Popular
+                    Categories</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                    <a class="flex flex-col items-center gap-4 p-6 rounded-2xl glass-card group" href="#">
+                        <div
+                            class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center text-white group-hover:scale-110 transition-transform shadow-inner">
+                            <span class="material-symbols-outlined scale-125">trending_up</span>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide">Finance</span>
+                    </a>
+                    <a class="flex flex-col items-center gap-4 p-6 rounded-2xl glass-card group" href="#">
+                        <div
+                            class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center text-white group-hover:scale-110 transition-transform shadow-inner">
+                            <span class="material-symbols-outlined scale-125">health_and_safety</span>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide">Health</span>
+                    </a>
+                    <a class="flex flex-col items-center gap-4 p-6 rounded-2xl glass-card group" href="#">
+                        <div
+                            class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center text-white group-hover:scale-110 transition-transform shadow-inner">
+                            <span class="material-symbols-outlined scale-125">restaurant</span>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide">Food</span>
+                    </a>
+                    <a class="flex flex-col items-center gap-4 p-6 rounded-2xl glass-card group" href="#">
+                        <div
+                            class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center text-white group-hover:scale-110 transition-transform shadow-inner">
+                            <span class="material-symbols-outlined scale-125">movie</span>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide">Cinema</span>
+                    </a>
+                    <a class="flex flex-col items-center gap-4 p-6 rounded-2xl glass-card group" href="#">
+                        <div
+                            class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center text-white group-hover:scale-110 transition-transform shadow-inner">
+                            <span class="material-symbols-outlined scale-125">sports_basketball</span>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide">Sports</span>
+                    </a>
+                    <a class="flex flex-col items-center gap-4 p-6 rounded-2xl glass-card group" href="#">
+                        <div
+                            class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center text-white group-hover:scale-110 transition-transform shadow-inner">
+                            <span class="material-symbols-outlined scale-125">more_horiz</span>
+                        </div>
+                        <span class="text-sm font-semibold tracking-wide">More</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="border-t border-white/10 py-12 bg-black/40 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-8 text-sm font-medium text-slate-400">
+                <a class="hover:text-white transition-colors" href="#">Privacy</a>
+                <a class="hover:text-white transition-colors" href="#">Terms</a>
+                <a class="hover:text-white transition-colors" href="#">About Nexus</a>
+            </div>
+            <p class="text-sm text-slate-500 font-light">© 2024 NEXUS SEARCH. INTEGRATED AI INTELLIGENCE.</p>
+        </div>
+    </footer>
+    <button
+        class="fixed bottom-10 right-10 w-14 h-14 bg-white text-slate-900 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform z-50">
+        <span class="material-symbols-outlined scale-110">chat_bubble</span>
+    </button>
+
+</body>
+
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEXUS - Search Results</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#101010",
+                        accent: "#3b82f6",
+                        "background-light": "#fdfdfe",
+                        "background-dark": "#050505",
+                        "card-light": "rgba(255, 255, 255, 0.65)",
+                        "card-dark": "rgba(23, 23, 23, 0.7)",
+                        "border-light": "rgba(255, 255, 255, 0.4)",
+                        "border-dark": "rgba(255, 255, 255, 0.08)",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                    },
+                },
+            },
+        };
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply font-display text-slate-900 dark:text-slate-100;
+            }
+        }
+        .glass-panel {
+            @apply backdrop-blur-xl bg-card-light dark:bg-card-dark border border-white/40 dark:border-white/10 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)];
+        }
+        .bg-mesh {
+            background: 
+                radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.08) 0, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(147, 51, 234, 0.05) 0, transparent 50%),
+                radial-gradient(at 50% 100%, rgba(59, 130, 246, 0.05) 0, transparent 50%);
+            background-color: #f8fafc;
+        }
+        .dark .bg-mesh {
+            background: 
+                radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(147, 51, 234, 0.1) 0, transparent 50%),
+                radial-gradient(at 50% 100%, rgba(59, 130, 246, 0.1) 0, transparent 50%);
+            background-color: #020617;
+        }.bg-dots {
+            background-image: radial-gradient(#64748b 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+            opacity: 0.15;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 10px;
+        }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #404040;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-mesh min-h-screen transition-colors duration-300 relative">
+<div class="fixed inset-0 bg-dots pointer-events-none"></div>
+<header class="sticky top-0 z-50 glass-panel !border-x-0 !border-t-0 !rounded-none">
+<div class="max-w-[1400px] mx-auto px-8 h-16 flex items-center justify-between gap-8">
+<div class="flex items-center gap-10">
+<h1 class="text-xl font-bold tracking-[0.2em] text-primary dark:text-white uppercase">Nexus</h1>
+<div class="relative flex-1 min-w-[550px]">
+<div class="flex items-center gap-3 bg-white/40 dark:bg-black/20 border border-white/20 dark:border-white/5 px-5 py-2.5 rounded-full shadow-inner backdrop-blur-sm">
+<span class="material-symbols-outlined text-slate-400 text-xl">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full outline-none placeholder-slate-400 font-medium" type="text" value="Future of AI in Interface Design"/>
+<div class="flex items-center gap-3 border-l border-slate-200 dark:border-slate-800 pl-4">
+<button class="material-symbols-outlined text-slate-400 hover:text-accent transition-colors">mic</button>
+<button class="material-symbols-outlined text-slate-400 hover:text-accent transition-colors">photo_camera</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="p-2 rounded-xl hover:bg-white/50 dark:hover:bg-white/10 transition-colors" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-symbols-outlined dark:hidden">dark_mode</span>
+<span class="material-symbols-outlined hidden dark:block text-yellow-400">light_mode</span>
+</button>
+<div class="w-9 h-9 rounded-xl bg-slate-900 dark:bg-white flex items-center justify-center font-bold text-[10px] text-white dark:text-black tracking-tighter">
+                    AS
+                </div>
+</div>
+</div>
+</header>
+<main class="max-w-[1400px] mx-auto px-8 py-10 relative z-10">
+<div class="flex gap-10">
+<div class="flex-1 max-w-3xl">
+<p class="text-[11px] font-semibold uppercase tracking-widest text-slate-400 mb-8 px-2">1.2M Results found in 0.4s</p>
+<div class="glass-panel rounded-3xl p-8 space-y-12">
+<article class="group">
+<div class="flex items-center gap-2 mb-2">
+<div class="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-blue-600">public</span>
+</div>
+<span class="text-xs text-slate-500 font-medium">uxdesign.cc › ai-ux-trends</span>
+</div>
+<h3 class="text-xl font-semibold text-slate-900 dark:text-white group-hover:text-accent transition-colors cursor-pointer mb-2 decoration-accent/30 underline-offset-4 group-hover:underline">
+                            The Evolution of Generative Interfaces: 2024 and Beyond
+                        </h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                            How AI is shifting the paradigm from static components to fluid, intentional UI. Explore the principles of predictive layouts and why "empty states" are becoming a thing of the past in the nexus of modern web design.
+                        </p>
+</article>
+<article class="group">
+<div class="flex items-center gap-2 mb-2">
+<div class="w-6 h-6 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-800">
+<img alt="Icon" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWlTAGCFCavu9G5T9KQGi3Nq5YLrGV1359PDp__dLTCPQGmCCTct7lfLnOkwbv8s_a5abnDO2da_A2PQT6pWT5b5wlRirlJAu41nv2vwgr_BaucEYz2Rd5WRRvurBbt9jrXnMNAoAdUo-yUmw7JESzoHyaPKqu4vqKJlKpFADQgOWIx4OMuEGjPkfkLmRmo58isDeYNzfBCdX5jd3yh_irtKC6Rt6YBW_RTmdIf4aUOOMQLMf3FhbRSbLFl1KwtgXgdFujjmlhwsKr"/>
+</div>
+<span class="text-xs text-slate-500 font-medium">medium.com › @tech-insights</span>
+</div>
+<h3 class="text-xl font-semibold text-slate-900 dark:text-white group-hover:text-accent transition-colors cursor-pointer mb-2 decoration-accent/30 underline-offset-4 group-hover:underline">
+                            Designing with Machine Learning: A Practical Guide for UX Designers
+                        </h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Practical frameworks for integrating AI recommendations into your search engines. This guide covers latent spaces, vector embeddings, and the importance of user trust in automated systems.
+                        </p>
+</article>
+<article class="group">
+<div class="flex items-center gap-2 mb-2">
+<div class="w-6 h-6 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-purple-600">description</span>
+</div>
+<span class="text-xs text-slate-500 font-medium">arxiv.org › papers › 2311.04562</span>
+</div>
+<h3 class="text-xl font-semibold text-slate-900 dark:text-white group-hover:text-accent transition-colors cursor-pointer mb-2 decoration-accent/30 underline-offset-4 group-hover:underline">
+                            Prompt Engineering for Visual Design: Large Multimodal Models in Action
+                        </h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Academic research on the intersection of LLMs and generative design. How multimodal models are interpreting visual hierarchy and generating semantic code for frontend development.
+                        </p>
+</article>
+<article class="group border-t border-slate-200/50 dark:border-white/5 pt-10">
+<div class="flex items-center gap-2 mb-2">
+<div class="w-6 h-6 bg-accent/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-accent">auto_awesome</span>
+</div>
+<span class="text-xs text-slate-500 font-medium">nexus.ai › blog › search-future</span>
+</div>
+<h3 class="text-xl font-semibold text-slate-900 dark:text-white group-hover:text-accent transition-colors cursor-pointer mb-2 decoration-accent/30 underline-offset-4 group-hover:underline">
+                            Personalized Discovery: The Death of the Traditional Search Bar
+                        </h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Why the future of Nexus is built around intent, not just keywords. A deep dive into our recommendation algorithms and the data-driven approach to visual search results.
+                        </p>
+</article>
+</div>
+</div>
+<aside class="w-[400px] shrink-0">
+<div class="sticky top-24 space-y-6">
+<div class="glass-panel rounded-3xl p-7">
+<div class="flex items-center gap-2 mb-6 text-accent">
+<span class="material-symbols-outlined text-xl">auto_awesome</span>
+<span class="text-[10px] font-bold uppercase tracking-[0.2em]">AI Insights</span>
+</div>
+<h2 class="text-xl font-bold mb-4 tracking-tight">Interface Design Evolution</h2>
+<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
+                            The future of interface design is defined by <strong class="text-slate-900 dark:text-white">Adaptive UI</strong> and <strong class="text-slate-900 dark:text-white">Multimodal Interactions</strong>. Current trends suggest a shift from manual input to intent-based prediction models.
+                        </p>
+<div class="space-y-5">
+<h4 class="text-[10px] font-bold uppercase text-slate-400 tracking-widest">Key Concepts</h4>
+<div class="grid grid-cols-2 gap-3">
+<div class="p-3 bg-white/40 dark:bg-white/5 border border-white/50 dark:border-white/5 rounded-xl text-xs font-medium hover:border-accent hover:bg-white/60 transition-all cursor-pointer">
+                                    Generative UI
+                                </div>
+<div class="p-3 bg-white/40 dark:bg-white/5 border border-white/50 dark:border-white/5 rounded-xl text-xs font-medium hover:border-accent hover:bg-white/60 transition-all cursor-pointer">
+                                    Semantic Search
+                                </div>
+<div class="p-3 bg-white/40 dark:bg-white/5 border border-white/50 dark:border-white/5 rounded-xl text-xs font-medium hover:border-accent hover:bg-white/60 transition-all cursor-pointer">
+                                    Latent Spaces
+                                </div>
+<div class="p-3 bg-white/40 dark:bg-white/5 border border-white/50 dark:border-white/5 rounded-xl text-xs font-medium hover:border-accent hover:bg-white/60 transition-all cursor-pointer">
+                                    Zero-Shot Design
+                                </div>
+</div>
+</div>
+<div class="mt-10 pt-8 border-t border-slate-200/50 dark:border-white/10">
+<h4 class="text-[10px] font-bold uppercase text-slate-400 tracking-widest mb-6">Related Topics</h4>
+<div class="space-y-5">
+<div class="flex items-center gap-4 group cursor-pointer">
+<img alt="Related" class="w-12 h-12 rounded-xl object-cover border border-white/40 dark:border-white/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVkVBzapnkgQl-oXMg12pXiapMpNmt7x_3qwInnfADa8zwoRQkBpi_V_KVe4OoExMXHZmnxlTuR_W8liphzUO2UQwf5IHE0a4yIPphiSwGA92aYhTzvpx6WvVBjRJvkBSc-QMRrwVQvyHUHsrwT6UlidoymBD94tc3OJHvZNMKAQPnRuQOwLwZxoYnW3oDZKXW4ZwDWQoHFV47Tqr_8a4fwbGWKqvW0t7m0cnN-J5cMQ25mNbY2vH2qf83hqIFpnsGRZ-cfTmaUMwI"/>
+<div class="flex-1">
+<p class="text-xs font-bold text-slate-800 dark:text-slate-200 group-hover:text-accent transition-colors">Cognitive Load in AI</p>
+<p class="text-[10px] text-slate-500 mt-1">UX Psych Principles</p>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+<div class="flex items-center gap-4 group cursor-pointer">
+<img alt="Related" class="w-12 h-12 rounded-xl object-cover border border-white/40 dark:border-white/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCr9tli0IcEybjB5OPdgr2gefdIHwycVpO19Qjx9OmWa4OLyWUZo8PfU4w92EqEZlB7Lv_1ldxdDm0cign1SezlgIX8Um-2wq_4Zf31Ox5miT944tBu-5rnCusMgCyBUXz3v8K5kmO3IHY_JPhVn4JQQLKZUBNqz0VOjT9sAY5nHTmtXebJmhMyWIanKg2K4LwlJN586h-ODxZyKg97Xk-YeZ1YAD7QHp_lvWzBpuYVeBZAJUpLGpgR4Svw0k0AdSA9cm-s2sU113WL"/>
+<div class="flex-1">
+<p class="text-xs font-bold text-slate-800 dark:text-slate-200 group-hover:text-accent transition-colors">Data Visualization 2.0</p>
+<p class="text-[10px] text-slate-500 mt-1">Interactive Analytics</p>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<section class="mt-12 pb-20">
+<div class="glass-panel rounded-[2rem] p-10">
+<div class="flex items-center justify-between mb-10">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-accent text-2xl">explore</span>
+<h2 class="text-2xl font-bold tracking-tight">Discover more for your search</h2>
+</div>
+<button class="text-xs font-bold text-slate-500 hover:text-accent transition-colors flex items-center gap-2 uppercase tracking-widest">
+                        Full Catalog <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] w-full rounded-2xl overflow-hidden mb-5 relative border border-white/40 dark:border-white/10">
+<img alt="Discover" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjjm6TIvIgmu9SEdoCXuVGW13k9R5PAufqXtxiICTwcDC7R7sIGs1lou4i7-jAfTAgiSB3YHuEqlYZAHmdgcZ4G0c0B6zJSHsn_SlpaiGSW9zVGfgTeM_OTVfImdqF-IHDSaVzg5IxmOmREFq9jP-1_kfZ9D3VoBljI3GI_kGmmn8zfTNO7Fs4x6QBSdjFpbdvztFx-UwQi5OhDbJ3U8gVoyT8lGihnm2WpPYrAprjgzsizYvkeRnahRJE5IZfPuYz0PL7GCIjXicr"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
+<span class="text-white text-[10px] font-bold uppercase tracking-widest bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20">New Article</span>
+</div>
+</div>
+<p class="text-[10px] font-bold text-accent uppercase tracking-widest mb-2">Architecture &amp; Design</p>
+<h3 class="font-bold text-base leading-snug text-slate-900 dark:text-white group-hover:text-accent transition-colors">The Minimalist's Guide to AI Systems</h3>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] w-full rounded-2xl overflow-hidden mb-5 relative border border-white/40 dark:border-white/10">
+<img alt="Discover" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAL_oC4krEUCnyS9aCaA1ekon0FM64A9408e-qp6QkdJzssawEkhLc42pv6Tkk7wQit2KYVTxqpVIbppZXImtUFGTOYjpSHhM2QMILAx-kMTpc2BubfRcuP6MKYu3f_1C-TpF1YlovQSrJV71njGfo6-uJpSfKFLexBAymVZj2Xz-ne3RZFQGcMJQM8APAvSvx4uUYkYud3hCt6A9bGMGiYLnYMvaF82LyfBG7YST10XB0UBOZ3ulmt6r73LJ9i4DCW8mAMBQvMyv72"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
+<span class="text-white text-[10px] font-bold uppercase tracking-widest bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20">Technology</span>
+</div>
+</div>
+<p class="text-[10px] font-bold text-accent uppercase tracking-widest mb-2">Deep Learning</p>
+<h3 class="font-bold text-base leading-snug text-slate-900 dark:text-white group-hover:text-accent transition-colors">How Neural Networks Learn Visual Patterns</h3>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] w-full rounded-2xl overflow-hidden mb-5 relative border border-white/40 dark:border-white/10">
+<img alt="Discover" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ0X92MfGo8RBQ3njkcN9RxrYyniMwNdRMc44vBZPpBouNTlYRBKBMJL3JY2X92RSMMA5FM7ZQ4keLnEkA91VpUcwIZB6gTaF7c8IhD-KFbYw9r7GFofdn-H6j0mkaJuqa3CzMF8jwpsRbPfu0sMoDe69Ma_QjrN70mTE4CWKphmCQqJ6dkpwFNz9TZH9Vfm5mDWrMutkdVw0DxDGk7SQ3s5_mIHU8R6HP8UaOlD-fJpGX6mEGDIkOytgboEmivCIVPqX7kLagySDq"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
+<span class="text-white text-[10px] font-bold uppercase tracking-widest bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20">Podcast</span>
+</div>
+</div>
+<p class="text-[10px] font-bold text-accent uppercase tracking-widest mb-2">Productivity</p>
+<h3 class="font-bold text-base leading-snug text-slate-900 dark:text-white group-hover:text-accent transition-colors">Automating Your Workflow with Nexus Tools</h3>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] w-full rounded-2xl overflow-hidden mb-5 relative border border-white/40 dark:border-white/10">
+<img alt="Discover" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcemR1Z05q7Cz_AOSfGRrbteo5fjQtRki5WP0lwg2aQCUselIM-2iG_kLX3pNPpY4ABqAK0yBtl1mrLUSlZm_no2FFf0a3TKkAb9Ci-DeObw4Q4muQhyJwxWLVsNe-lppPnNZotWlyX_wQyQgOeE6Hz9Qx4BTg_eHZAJ77nzPMWopmZvvRqMCA_l_DYmAILrgWI-TLN-Qtrk9LrhTlyEfOeM6ffYTY_IauKnEwQZTZM595_XPN4ClXZrJ-Q8kbu-2Cwji_S1kAofqe"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
+<span class="text-white text-[10px] font-bold uppercase tracking-widest bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20">Workshop</span>
+</div>
+</div>
+<p class="text-[10px] font-bold text-accent uppercase tracking-widest mb-2">Interface Design</p>
+<h3 class="font-bold text-base leading-snug text-slate-900 dark:text-white group-hover:text-accent transition-colors">Future Interfaces: From Theory to Prototypes</h3>
+</div>
+</div>
+</div>
+</section>
+</main>
+<div class="fixed bottom-8 right-8 z-50">
+<button class="w-14 h-14 bg-slate-900 text-white dark:bg-white dark:text-slate-900 rounded-2xl flex items-center justify-center shadow-2xl hover:scale-105 active:scale-95 transition-all group overflow-hidden border border-white/20">
+<span class="text-xl font-black group-hover:rotate-12 transition-transform">N</span>
+<div class="absolute inset-0 bg-accent/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</button>
+</div>
+
+</body></html>

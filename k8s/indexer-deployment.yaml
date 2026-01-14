@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: indexing-worker
+  namespace: search-engine
+spec:
+  replicas: 50
+  selector:
+    matchLabels:
+      app: indexing-worker
+  template:
+    metadata:
+      labels:
+        app: indexing-worker
+    spec:
+      containers:
+        - name: indexing-worker
+          image: search-engine-indexer:latest
+          command: ["node", "workers/indexing-worker.js"]
+          envFrom:
+            - configMapRef:
+                name: search-engine-config
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "500m"
+            limits:
+              memory: "1Gi"
+              cpu: "1000m"
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: indexing-worker-hpa
+  namespace: search-engine
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: indexing-worker
+  minReplicas: 50
+  maxReplicas: 200
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70

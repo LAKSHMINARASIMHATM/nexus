@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEXUS | Immersive AI Search</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#ffffff",
+                        "glass-white": "rgba(255, 255, 255, 0.08)",
+                        "glass-border": "rgba(255, 255, 255, 0.15)",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "16px",
+                        "2xl": "32px",
+                    },
+                },
+            },
+        };
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply font-display text-white overflow-x-hidden;
+                background-color: #050505;
+            }
+        }
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .video-container video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: brightness(0.6) contrast(1.1);
+        }
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+            z-index: 0;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .glass-input {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .text-crisp {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+<div class="video-container">
+<video autoplay="" loop="" muted="" playsinline="" poster="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&amp;fit=crop&amp;q=80&amp;w=2000">
+<source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-flowing-curves-in-blue-and-purple-4122-large.mp4" type="video/mp4"/>
+</video>
+<div class="video-overlay"></div>
+</div>
+<nav class="fixed top-0 w-full z-50 glass-panel border-x-0 border-t-0 bg-white/5">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-10">
+<span class="text-3xl font-extrabold tracking-tighter text-white text-crisp">NEXUS</span>
+<div class="hidden md:flex items-center gap-8 text-sm font-medium">
+<a class="text-white/70 hover:text-white transition-colors flex items-center gap-2 group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">search</span>All
+                    </a>
+<a class="text-white/70 hover:text-white transition-colors flex items-center gap-2 group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">image</span>Images
+                    </a>
+<a class="text-white/70 hover:text-white transition-colors flex items-center gap-2 group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">newspaper</span>News
+                    </a>
+<a class="text-white/70 hover:text-white transition-colors flex items-center gap-2 group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">play_circle</span>Videos
+                    </a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="p-2.5 rounded-full hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-10 w-10 rounded-full glass-panel flex items-center justify-center text-sm font-bold border-white/20 hover:scale-105 transition-transform cursor-pointer">
+                    JD
+                </div>
+</div>
+</div>
+</nav>
+<main class="relative z-10 pt-44 pb-24 px-6">
+<div class="max-w-4xl mx-auto text-center mb-24">
+<h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-10 text-crisp bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
+                What can I help you find?
+            </h1>
+<div class="relative group max-w-3xl mx-auto">
+<div class="absolute -inset-1.5 bg-gradient-to-r from-blue-500/30 to-purple-500/30 rounded-[32px] blur-xl opacity-40 group-hover:opacity-100 transition duration-700"></div>
+<div class="relative glass-input rounded-2xl flex items-center px-8 py-6 shadow-2xl">
+<span class="material-symbols-outlined text-white/50 text-3xl">search</span>
+<input autofocus="" class="w-full bg-transparent border-none focus:ring-0 text-xl px-6 placeholder:text-white/40 text-white font-light" placeholder="Search the Nexus network..." type="text"/>
+<div class="flex items-center gap-4">
+<button class="p-2 text-white/50 hover:text-white transition-all hover:scale-110">
+<span class="material-symbols-outlined text-2xl">mic</span>
+</button>
+<button class="p-2 text-white/50 hover:text-white transition-all hover:scale-110">
+<span class="material-symbols-outlined text-2xl">photo_camera</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-10 flex flex-wrap justify-center gap-3">
+<span class="text-xs font-bold text-white/40 uppercase tracking-[0.3em] mr-2 py-2">Trending</span>
+<button class="px-5 py-2 text-sm rounded-full glass-panel hover:bg-white/20 transition-all border-white/10">Neural Architecture</button>
+<button class="px-5 py-2 text-sm rounded-full glass-panel hover:bg-white/20 transition-all border-white/10">Web3 Ecosystems</button>
+<button class="px-5 py-2 text-sm rounded-full glass-panel hover:bg-white/20 transition-all border-white/10">Deep Space Bio</button>
+</div>
+</div>
+<div class="max-w-7xl mx-auto">
+<div class="flex items-center justify-between mb-10">
+<h2 class="text-2xl font-bold flex items-center gap-3 text-crisp">
+<span class="material-symbols-outlined text-blue-400">auto_awesome</span>
+                    Recommended for You
+                </h2>
+<button class="px-6 py-2 rounded-full glass-panel text-sm font-semibold hover:bg-white/10 flex items-center gap-2 transition-all">
+                    Explore all <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="group card-hover glass-panel rounded-2xl overflow-hidden flex flex-col">
+<div class="aspect-video relative overflow-hidden">
+<img alt="AI Trends" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5eesZHcFixSzwJjhoSTqywlLa0QophyjyDCacd_qB7R2D_Ta73qYwhr3ZxOFsVWrUC-4tdHf-fg0TIsC-vSsseuD8sTFQ2QwAcmP_2uQWhxMF-wvo1EBqc2vjENWh8XH5CUcQwxk-heQuTAszDSoB06WHBpA1418SUorcDrvqSZA_MZ7-71-GZC_bVSX41BN_kS1fKeB_dLdzIJJkICIj7-i2VEGUnnSKs8_NzwASuy5nrZ5aGWL_Mm1aCaYZKnuDTIGcxeQHONaI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="p-8">
+<div class="flex items-center gap-3 mb-4">
+<span class="px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest bg-blue-500/20 text-blue-300 border border-blue-500/30 rounded">Technology</span>
+<span class="text-xs text-white/40">5 min read</span>
+</div>
+<h3 class="text-xl font-bold mb-3 text-crisp group-hover:text-blue-300 transition-colors">The Future of AI: Beyond Large Language Models</h3>
+<p class="text-white/60 text-sm leading-relaxed line-clamp-2">Exploring the next frontier of artificial intelligence and how multi-modal agents are reshaping our digital world.</p>
+</div>
+</div>
+<div class="group card-hover glass-panel rounded-2xl overflow-hidden flex flex-col">
+<div class="aspect-video relative overflow-hidden">
+<img alt="Ocean Discovery" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqvlZTXsUIPO1JCJMgUe04Ks1IwJk6mOeNbzLNxwy48b3cYfEUUpnDJptqwGYX7XoreJ61PSZVIOCx99-KqndAFM_WCX1FJLc5rD6tI3K5SelQQx_n02yXnZlCKgSnHax_sayRecMJrDrT70dhv7gSLB5avSqjxYrFdCkdo5UxWxt9xWYsEdKkGbHWuWV0df5mTVROU2jRcWU9q5f-XG9XvBmBATYwTPDnc4N1UOGZ_C0-buuoN75SP9QTt4e7iYOtgj6Di1ib9hVo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="p-8">
+<div class="flex items-center gap-3 mb-4">
+<span class="px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded">Science</span>
+<span class="text-xs text-white/40">12 min read</span>
+</div>
+<h3 class="text-xl font-bold mb-3 text-crisp group-hover:text-emerald-300 transition-colors">Deep Sea Exploration: The Silent Frontier</h3>
+<p class="text-white/60 text-sm leading-relaxed line-clamp-2">New discoveries at the bottom of the Mariana Trench reveal life forms previously thought impossible.</p>
+</div>
+</div>
+<div class="group card-hover glass-panel rounded-2xl overflow-hidden flex flex-col">
+<div class="aspect-video relative overflow-hidden">
+<img alt="Design Architecture" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5k2Yhrx__LD2updQ0Sq40wjOEVYddxTVl4HPXcqJ9Q3d_1YbkjaJ84Wq0UBZs7naiYd0SKXkV8Wng9n1jb2fJGEuVB3rrTb--kexzM7uxPal7QRVSXNYHDqiOyUEuNMAhdsk8fCrwJBCH-kXRRaYrL2G6xTZ3-evLBnSmoZ1xliXJNUpwHkO1xqwGNjVXO2feBNiQ4PE_rRSFFWDeR0zE9QNFa3i3cjX7dnI5FvEuHidTXfr8EOUrSorImd-iRsE_Gp2L9df-9Gpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="p-8">
+<div class="flex items-center gap-3 mb-4">
+<span class="px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest bg-purple-500/20 text-purple-300 border border-purple-500/30 rounded">Design</span>
+<span class="text-xs text-white/40">8 min read</span>
+</div>
+<h3 class="text-xl font-bold mb-3 text-crisp group-hover:text-purple-300 transition-colors">Sustainable Urbanism in 2024</h3>
+<p class="text-white/60 text-sm leading-relaxed line-clamp-2">How modern cities are integrating nature to fight rising temperatures and improve resident well-being.</p>
+</div>
+</div>
+</div>
+<div class="mt-24 pt-20 border-t border-white/10">
+<h3 class="text-sm font-bold uppercase tracking-[0.4em] text-white/40 mb-12 text-center">Popular Categories</h3>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+<a class="flex flex-col items-center gap-4 p-6 glass-panel rounded-2xl group transition-all" href="#">
+<div class="w-14 h-14 rounded-full bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">trending_up</span>
+</div>
+<span class="text-sm font-bold tracking-wide">Finance</span>
+</a>
+<a class="flex flex-col items-center gap-4 p-6 glass-panel rounded-2xl group transition-all" href="#">
+<div class="w-14 h-14 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">health_and_safety</span>
+</div>
+<span class="text-sm font-bold tracking-wide">Health</span>
+</a>
+<a class="flex flex-col items-center gap-4 p-6 glass-panel rounded-2xl group transition-all" href="#">
+<div class="w-14 h-14 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">restaurant</span>
+</div>
+<span class="text-sm font-bold tracking-wide">Food</span>
+</a>
+<a class="flex flex-col items-center gap-4 p-6 glass-panel rounded-2xl group transition-all" href="#">
+<div class="w-14 h-14 rounded-full bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">movie</span>
+</div>
+<span class="text-sm font-bold tracking-wide">Entertainment</span>
+</a>
+<a class="flex flex-col items-center gap-4 p-6 glass-panel rounded-2xl group transition-all" href="#">
+<div class="w-14 h-14 rounded-full bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">sports_basketball</span>
+</div>
+<span class="text-sm font-bold tracking-wide">Sports</span>
+</a>
+<a class="flex flex-col items-center gap-4 p-6 glass-panel rounded-2xl group transition-all" href="#">
+<div class="w-14 h-14 rounded-full bg-white/5 border border-white/20 flex items-center justify-center text-white/50 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">more_horiz</span>
+</div>
+<span class="text-sm font-bold tracking-wide">Explore</span>
+</a>
+</div>
+</div>
+</div>
+</main>
+<footer class="relative z-10 glass-panel border-x-0 border-b-0 py-12 bg-black/20">
+<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-10 text-sm font-medium text-white/50">
+<a class="hover:text-white transition-colors" href="#">Privacy Hub</a>
+<a class="hover:text-white transition-colors" href="#">Legal Terms</a>
+<a class="hover:text-white transition-colors" href="#">The Nexus Vision</a>
+</div>
+<p class="text-sm text-white/30 tracking-widest">© 2024 NEXUS SYSTEMS. POWERED BY NEURAL SEARCH.</p>
+</div>
+</footer>
+<button class="fixed bottom-10 right-10 w-16 h-16 bg-white text-black rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-all z-50 group">
+<span class="material-symbols-outlined text-3xl">chat_bubble</span>
+<div class="absolute -top-12 right-0 glass-panel px-4 py-2 rounded-xl text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap text-white">Ask AI Assistant</div>
+</button>
+
+</body></html>
