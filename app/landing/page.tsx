@@ -53,6 +53,13 @@ export default function LandingPage() {
             >
               DISCOVER
             </button>
+            <button
+              className="hover:text-white transition-colors"
+              type="button"
+              onClick={() => router.push("/admin")}
+            >
+              DASHBOARD
+            </button>
           </div>
         </div>
         <UserMenu landingPageMode />

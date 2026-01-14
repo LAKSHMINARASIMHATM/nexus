@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useRef, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { Search, Mic, Camera, Moon, Sun, Compass, ArrowRight, Sparkles } from "lucide-react";
+import { Search, Mic, Camera, Moon, Sun, Compass, ArrowRight, Sparkles, Settings } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -339,6 +339,13 @@ function SearchResults() {
                         )}
                     </div>
                     <div className="flex items-center gap-6 shrink-0">
+                        <button
+                            className="p-2 rounded-xl hover:bg-white/50 dark:hover:bg-white/10 transition-colors hidden md:block"
+                            onClick={() => router.push('/admin')}
+                            title="Admin Dashboard"
+                        >
+                            <Settings className="h-5 w-5 text-slate-700 dark:text-slate-300" />
+                        </button>
                         <button className="p-2 rounded-xl hover:bg-white/50 dark:hover:bg-white/10 transition-colors" onClick={toggleDarkMode}>
                             <Moon className="h-5 w-5 dark:hidden text-slate-700" />
                             <Sun className="h-5 w-5 hidden dark:block text-yellow-400" />

@@ -55,9 +55,9 @@ export class MetricsService {
                     p99_latency_ms: 245
                 },
                 crawler: {
-                    urls_crawled: 125000,
-                    urls_queued: 45000,
-                    success_rate: 0.94,
+                    urls_crawled: parseInt((await pool.query("SELECT COUNT(*) FROM crawl_queue WHERE status = 'completed'")).rows[0].count),
+                    urls_queued: parseInt((await pool.query("SELECT COUNT(*) FROM crawl_queue WHERE status = 'pending'")).rows[0].count),
+                    success_rate: 0.94, // Keep mock for now until we track failures better
                     avg_fetch_time_ms: 850,
                     bandwidth_mbps: 450
                 },
