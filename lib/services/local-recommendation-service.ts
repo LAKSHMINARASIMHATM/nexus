@@ -21,34 +21,103 @@ export interface RecommendationOptions {
   offset?: number;
 }
 
+// Simple in-memory cache for high-frequency lists
+interface CacheEntry<T> {
+  data: T;
+  expiry: number;
+}
+
+const cache = new Map<string, CacheEntry<any>>();
+const CACHE_TTL = 10 * 60 * 1000; // Increase to 10 minutes
+
 export class LocalRecommendationService {
+  private getCached<T>(key: string): T | null {
+    const entry = cache.get(key);
+    if (!entry) return null;
+    if (Date.now() > entry.expiry) {
+      cache.delete(key);
+      return null;
+    }
+    return entry.data;
+  }
+
+  private setCached<T>(key: string, data: T, customTTL?: number): void {
+    cache.set(key, {
+      data,
+      expiry: Date.now() + (customTTL || CACHE_TTL)
+    });
+  }
+
+  /**
+   * Warm up the cache for common queries
+   */
+  async warmup(): Promise<void> {
+    console.log('🔥 Warming up recommendations cache...');
+    try {
+      // Warm up popular and trending
+      await Promise.all([
+        this.getPopularDocuments({ limit: 10 }),
+        this.getTrendingDocuments({ limit: 10 }),
+        this.getTrendingDocuments({ limit: 5 }), // For landing page
+        this.getPopularDocuments({ limit: 5 }),  // For sidebar
+      ]);
+
+      // Warm up common categories
+      const commonCategories = [
+        'technology ai software',
+        'science research space',
+        'design ux ui art',
+        'web development internet code'
+      ];
+
+      await Promise.all(
+        commonCategories.map(query => this.getRelatedDocuments(query, { limit: 5 }))
+      );
+
+      console.log('✅ Recommendations cache warmed up');
+    } catch (error) {
+      console.error('❌ Cache warmup failed:', error);
+    }
+  }
+
   /**
    * Get popular documents based on PageRank and recency
    */
   async getPopularDocuments(options: RecommendationOptions = {}): Promise<DocumentRecommendation[]> {
     const { limit = 10, offset = 0 } = options;
+    const cacheKey = `popular_${limit}_${offset}`;
+
+    const cached = this.getCached<DocumentRecommendation[]>(cacheKey);
+    if (cached) return cached;
 
     const query = `
-      SELECT 
-        doc_id,
-        url,
-        title,
-        meta_description,
-        pagerank as score,
-        pagerank,
-        created_at
-      FROM documents
-      WHERE index_status = 'indexed'
-        AND title IS NOT NULL
-        AND title != ''
-      ORDER BY 
-        pagerank DESC,
-        created_at DESC
+      WITH top_docs AS (
+        SELECT 
+          doc_id,
+          url,
+          title,
+          meta_description,
+          pagerank as score,
+          pagerank,
+          created_at
+        FROM documents
+        WHERE index_status = 'indexed'
+          AND title IS NOT NULL
+          AND title != ''
+        ORDER BY 
+          pagerank DESC,
+          created_at DESC
+        LIMIT 20
+      )
+      SELECT * FROM top_docs
+      ORDER BY RANDOM()
       LIMIT $1 OFFSET $2
     `;
 
     const result = await pool.query(query, [limit, offset]);
-    return result.rows;
+    const recommendations = result.rows;
+    this.setCached(cacheKey, recommendations);
+    return recommendations;
   }
 
   /**
@@ -56,29 +125,40 @@ export class LocalRecommendationService {
    */
   async getTrendingDocuments(options: RecommendationOptions = {}): Promise<DocumentRecommendation[]> {
     const { limit = 10, offset = 0 } = options;
+    const cacheKey = `trending_${limit}_${offset}`;
+
+    const cached = this.getCached<DocumentRecommendation[]>(cacheKey);
+    if (cached) return cached;
 
     const query = `
-      SELECT 
-        doc_id,
-        url,
-        title,
-        meta_description,
-        pagerank as score,
-        pagerank,
-        created_at
-      FROM documents
-      WHERE index_status = 'indexed'
-        AND title IS NOT NULL
-        AND title != ''
-        AND created_at >= NOW() - INTERVAL '30 days'
-      ORDER BY 
-        created_at DESC,
-        pagerank DESC
+      WITH trending_docs AS (
+        SELECT 
+          doc_id,
+          url,
+          title,
+          meta_description,
+          pagerank as score,
+          pagerank,
+          created_at
+        FROM documents
+        WHERE index_status = 'indexed'
+          AND title IS NOT NULL
+          AND title != ''
+          AND created_at >= NOW() - INTERVAL '30 days'
+        ORDER BY 
+          created_at DESC,
+          pagerank DESC
+        LIMIT 20
+      )
+      SELECT * FROM trending_docs
+      ORDER BY RANDOM()
       LIMIT $1 OFFSET $2
     `;
 
     const result = await pool.query(query, [limit, offset]);
-    return result.rows;
+    const recommendations = result.rows;
+    this.setCached(cacheKey, recommendations);
+    return recommendations;
   }
 
   /**
@@ -90,6 +170,10 @@ export class LocalRecommendationService {
     options: RecommendationOptions = {}
   ): Promise<DocumentRecommendation[]> {
     const { limit = 10, offset = 0 } = options;
+    const cacheKey = `similar_${docId}_${limit}_${offset}`;
+
+    const cached = this.getCached<DocumentRecommendation[]>(cacheKey);
+    if (cached) return cached;
 
     // First, get the source document
     const sourceDoc = await pool.query(
@@ -103,38 +187,29 @@ export class LocalRecommendationService {
 
     const { title, meta_description } = sourceDoc.rows[0];
 
-    // Create search terms from title and description
-    const searchText = [title, meta_description]
-      .filter(Boolean)
-      .join(' ')
-      .replace(/[^\w\s]/g, ' ') // Remove special characters
-      .split(/\s+/)
-      .filter(word => word.length > 3) // Only words longer than 3 chars
-      .slice(0, 10) // Take first 10 words
-      .join(' & '); // Use AND operator for tsquery
-
-    if (!searchText) {
-      return this.getPopularDocuments(options);
-    }
-
     const query = `
-      SELECT 
-        doc_id,
-        url,
-        title,
-        meta_description,
-        similarity as score,
-        pagerank,
-        created_at
-      FROM documents,
-        similarity(title || ' ' || COALESCE(meta_description, ''), $1) as similarity
-      WHERE doc_id != $2
-        AND index_status = 'indexed'
-        AND title IS NOT NULL
-        AND title != ''
-      ORDER BY 
-        similarity DESC,
-        pagerank DESC
+      WITH similar_docs AS (
+        SELECT 
+          doc_id,
+          url,
+          title,
+          meta_description,
+          similarity as score,
+          pagerank,
+          created_at
+        FROM documents,
+          similarity(title || ' ' || COALESCE(meta_description, ''), $1) as similarity
+        WHERE doc_id != $2
+          AND index_status = 'indexed'
+          AND title IS NOT NULL
+          AND title != ''
+        ORDER BY 
+          similarity DESC,
+          pagerank DESC
+        LIMIT 20
+      )
+      SELECT * FROM similar_docs
+      ORDER BY RANDOM()
       LIMIT $3 OFFSET $4
     `;
 
@@ -145,7 +220,9 @@ export class LocalRecommendationService {
         limit,
         offset
       ]);
-      return result.rows;
+      const recommendations = result.rows;
+      this.setCached(cacheKey, recommendations);
+      return recommendations;
     } catch (error) {
       // Fallback to simple text matching if similarity function not available
       const fallbackQuery = `
@@ -174,7 +251,9 @@ export class LocalRecommendationService {
 
       const searchPattern = `%${title.split(' ')[0]}%`;
       const result = await pool.query(fallbackQuery, [docId, searchPattern, limit, offset]);
-      return result.rows;
+      const recommendations = result.rows;
+      this.setCached(cacheKey, recommendations);
+      return recommendations;
     }
   }
 
@@ -186,36 +265,47 @@ export class LocalRecommendationService {
     options: RecommendationOptions = {}
   ): Promise<DocumentRecommendation[]> {
     const { limit = 10, offset = 0 } = options;
+    const cacheKey = `related_${query}_${limit}_${offset}`;
+
+    const cached = this.getCached<DocumentRecommendation[]>(cacheKey);
+    if (cached) return cached;
 
     if (!query || query.trim().length === 0) {
       return this.getPopularDocuments(options);
     }
 
     const searchQuery = `
-      SELECT 
-        doc_id,
-        url,
-        title,
-        meta_description,
-        GREATEST(
-          similarity(title, $1),
-          similarity(COALESCE(meta_description, ''), $1)
-        ) as score,
-        pagerank,
-        created_at
-      FROM documents
-      WHERE index_status = 'indexed'
-        AND title IS NOT NULL
-        AND title != ''
-      ORDER BY 
-        score DESC,
-        pagerank DESC
+      WITH related_docs AS (
+        SELECT 
+          doc_id,
+          url,
+          title,
+          meta_description,
+          GREATEST(
+            similarity(title, $1),
+            similarity(COALESCE(meta_description, ''), $1)
+          ) as score,
+          pagerank,
+          created_at
+        FROM documents
+        WHERE index_status = 'indexed'
+          AND title IS NOT NULL
+          AND title != ''
+        ORDER BY 
+          score DESC,
+          pagerank DESC
+        LIMIT 20
+      )
+      SELECT * FROM related_docs
+      ORDER BY RANDOM()
       LIMIT $2 OFFSET $3
     `;
 
     try {
       const result = await pool.query(searchQuery, [query, limit, offset]);
-      return result.rows;
+      const recommendations = result.rows;
+      this.setCached(cacheKey, recommendations);
+      return recommendations;
     } catch (error) {
       // Fallback to ILIKE search
       const fallbackQuery = `
@@ -248,7 +338,9 @@ export class LocalRecommendationService {
 
       const searchPattern = `%${query}%`;
       const result = await pool.query(fallbackQuery, [searchPattern, limit, offset]);
-      return result.rows;
+      const recommendations = result.rows;
+      this.setCached(cacheKey, recommendations);
+      return recommendations;
     }
   }
 
@@ -257,6 +349,7 @@ export class LocalRecommendationService {
    */
   async getRandomDocuments(options: RecommendationOptions = {}): Promise<DocumentRecommendation[]> {
     const { limit = 10, offset = 0 } = options;
+    // We don't cache random documents as they should be random each time
 
     const query = `
       SELECT 
@@ -283,10 +376,16 @@ export class LocalRecommendationService {
    * Get document count for statistics
    */
   async getDocumentCount(): Promise<number> {
+    const cacheKey = 'doc_count';
+    const cached = this.getCached<number>(cacheKey);
+    if (cached !== null) return cached;
+
     const result = await pool.query(
       "SELECT COUNT(*) as count FROM documents WHERE index_status = 'indexed'"
     );
-    return parseInt(result.rows[0].count);
+    const count = parseInt(result.rows[0].count);
+    this.setCached(cacheKey, count, 60 * 60 * 1000); // Cache count for 1 hour
+    return count;
   }
 }
 

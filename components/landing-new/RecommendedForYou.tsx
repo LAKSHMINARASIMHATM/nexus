@@ -5,6 +5,7 @@ import { useLocalRecommendations } from "@/hooks/use-local-recommendations";
 import Link from "next/link";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { DocumentRecommendation } from "@/lib/services/local-recommendation-service";
 
 const CATEGORIES = [
     { id: 'all', label: 'All', query: null },
@@ -14,7 +15,11 @@ const CATEGORIES = [
     { id: 'web', label: 'Web', query: 'web development internet code' },
 ];
 
-export default function RecommendedForYou() {
+interface RecommendedForYouProps {
+    initialData?: DocumentRecommendation[];
+}
+
+export default function RecommendedForYou({ initialData }: RecommendedForYouProps) {
     const [activeCategory, setActiveCategory] = useState('all');
 
     const activeQuery = CATEGORIES.find(c => c.id === activeCategory)?.query;
@@ -23,7 +28,8 @@ export default function RecommendedForYou() {
         // If query is present, use 'related', otherwise use 'trending' for 'all'
         type: activeQuery ? 'related' : 'trending',
         query: activeQuery || undefined,
-        limit: 3,
+        limit: 5,
+        initialData: activeCategory === 'all' ? initialData : undefined,
     });
 
     const getCategory = (url: string) => {
@@ -93,7 +99,7 @@ export default function RecommendedForYou() {
                         </button>
                     </div>
                 ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
                         {recommendations.map((item, i) => {
                             const color = colors[i % colors.length];
                             // Try to deduce context category or fallback to URL part
@@ -116,25 +122,20 @@ export default function RecommendedForYou() {
                                         <div className="absolute bottom-4 left-4 right-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
                                             <span className="text-xs font-mono text-white/70 flex items-center gap-2">
                                                 <ExternalLink className="w-3 h-3" />
-                                                {new URL(item.url).hostname}
+                                                <span className="truncate max-w-[120px]">{new URL(item.url).hostname}</span>
                                             </span>
                                         </div>
                                     </div>
-                                    <div className="p-8 flex-1 flex flex-col">
-                                        <div className="flex items-center gap-3 mb-4">
-                                            <span className={`px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest bg-${color}-500/20 text-${color}-300 border border-${color}-500/30 rounded`}>
+                                    <div className="p-6 flex-1 flex flex-col">
+                                        <div className="flex items-center gap-2 mb-3">
+                                            <span className={`px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest bg-${color}-500/20 text-${color}-300 border border-${color}-500/30 rounded`}>
                                                 {displayCategory}
                                             </span>
-                                            {item.created_at && (
-                                                <span className="text-xs text-white/40">
-                                                    {new Date(item.created_at).toLocaleDateString()}
-                                                </span>
-                                            )}
                                         </div>
-                                        <h3 className="text-xl font-bold mb-3 text-crisp group-hover:text-blue-300 transition-colors text-white line-clamp-2">
+                                        <h3 className="text-base font-bold mb-2 text-crisp group-hover:text-blue-300 transition-colors text-white line-clamp-2">
                                             {item.title}
                                         </h3>
-                                        <p className="text-white/60 text-sm leading-relaxed line-clamp-3">
+                                        <p className="text-white/50 text-[11px] leading-relaxed line-clamp-3">
                                             {item.meta_description || "No description available for this document."}
                                         </p>
                                     </div>

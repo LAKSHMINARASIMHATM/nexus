@@ -137,18 +137,7 @@ async function crawl() {
     console.log('🚀 Starting Real-time Crawler...');
 
     // Seed queue if empty
-    // Always try to seed initial URLs (idempotent via ON CONFLICT)
-    const seeds = [
-        'https://news.ycombinator.com/',
-        'https://dev.to/',
-        'https://github.com/trending',
-        'https://simhahatwar.me',
-        ...Array.from({ length: 26 }, (_, i) => `https://en.wikipedia.org/wiki/${String.fromCharCode(65 + i)}`)
-    ];
-
-    for (const url of seeds) {
-        await pool.query('INSERT INTO crawl_queue (url, status) VALUES ($1, \'pending\') ON CONFLICT DO NOTHING', [url]);
-    }
+    // Removed hardcoded seeds to respect user's custom queue
 
     let pagesCrawled = 0;
 

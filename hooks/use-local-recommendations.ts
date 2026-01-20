@@ -11,6 +11,8 @@ interface UseLocalRecommendationsOptions {
     docId?: string; // Required for 'similar' type
     query?: string; // Required for 'related' type
     autoFetch?: boolean;
+    initialData?: DocumentRecommendation[];
+    skipFetchIfInitial?: boolean;
 }
 
 interface UseLocalRecommendationsReturn {
@@ -23,18 +25,23 @@ interface UseLocalRecommendationsReturn {
 
 export function useLocalRecommendations({
     type = 'popular',
-    limit = 10,
+    limit = 5,
     offset = 0,
     docId,
     query,
     autoFetch = true,
+    initialData,
+    skipFetchIfInitial = false,
 }: UseLocalRecommendationsOptions = {}): UseLocalRecommendationsReturn {
-    const [recommendations, setRecommendations] = useState<DocumentRecommendation[]>([]);
-    const [loading, setLoading] = useState(autoFetch);
+    const [recommendations, setRecommendations] = useState<DocumentRecommendation[]>(initialData || []);
+    const [loading, setLoading] = useState(autoFetch && !initialData);
     const [error, setError] = useState<string | null>(null);
-    const [total, setTotal] = useState(0);
+    const [total, setTotal] = useState(initialData?.length || 0);
 
-    const fetchRecommendations = useCallback(async () => {
+    const fetchRecommendations = useCallback(async (isRefetch = false) => {
+        if (!isRefetch && skipFetchIfInitial && initialData && initialData.length > 0) {
+            return;
+        }
         try {
             setLoading(true);
             setError(null);
@@ -82,6 +89,6 @@ export function useLocalRecommendations({
         loading,
         error,
         total,
-        refetch: fetchRecommendations,
+        refetch: () => fetchRecommendations(true),
     };
 }

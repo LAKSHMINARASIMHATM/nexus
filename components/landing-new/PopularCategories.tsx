@@ -1,4 +1,5 @@
 import { Monitor, Microscope, Briefcase, HeartPulse, GraduationCap, Cpu } from "lucide-react";
+import { DocumentRecommendation } from "@/lib/services/local-recommendation-service";
 
 const categories = [
     { name: "Tech", icon: Monitor, color: "blue", query: "technology programming" },
@@ -9,7 +10,11 @@ const categories = [
     { name: "AI", icon: Cpu, color: "violet", query: "artificial intelligence ml" }
 ];
 
-export default function PopularCategories() {
+interface PopularCategoriesProps {
+    initialData?: DocumentRecommendation[];
+}
+
+export default function PopularCategories({ initialData }: PopularCategoriesProps) {
     return (
         <section className="py-24 px-6 relative z-10 border-t border-white/10 bg-black/20 backdrop-blur-md">
             <div className="max-w-7xl mx-auto">

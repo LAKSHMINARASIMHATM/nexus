@@ -9,6 +9,9 @@
     "start": "next start",
     "db:setup": "npx tsx scripts/setup-db.ts",
     "db:seed": "npx tsx scripts/seed-data.ts",
+    "db:seed-alphabet": "npx tsx scripts/seed-alphabetical-urls.ts",
+    "db:seed-to-crawler": "npx tsx scripts/seed-urls-to-crawler.ts",
+    "db:reset-crawler": "npx tsx scripts/reset-crawl-queue.ts",
     "db:optimize": "npx tsx scripts/optimize-database.ts",
     "crawler": "npx tsx scripts/crawler.ts",
     "stats": "npx tsx scripts/count-stats.ts"
