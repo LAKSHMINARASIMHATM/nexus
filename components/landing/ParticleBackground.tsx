@@ -9,6 +9,8 @@ export function ParticleBackground() {
     useEffect(() => {
         if (!containerRef.current) return
 
+        console.log('ParticleBackground mounting...')
+
         const container = containerRef.current
         const scene = new THREE.Scene()
         // Light background color
@@ -21,6 +23,8 @@ export function ParticleBackground() {
         renderer.setSize(window.innerWidth, window.innerHeight)
         renderer.setPixelRatio(window.devicePixelRatio)
         container.appendChild(renderer.domElement)
+
+        console.log('ParticleBackground canvas added to DOM')
 
         // Particles
         const geometry = new THREE.BufferGeometry()
@@ -81,17 +85,22 @@ export function ParticleBackground() {
         window.addEventListener("resize", handleResize)
 
         return () => {
+            console.log('ParticleBackground cleaning up...')
             window.removeEventListener("resize", handleResize)
-            container.removeChild(renderer.domElement)
+            if (container.contains(renderer.domElement)) {
+                container.removeChild(renderer.domElement)
+            }
             geometry.dispose()
             material.dispose()
+            renderer.dispose()
         }
     }, [])
 
     return (
         <div
             ref={containerRef}
-            className="fixed top-0 left-0 w-full h-full -z-10"
+            className="fixed top-0 left-0 w-full h-full"
+            style={{ zIndex: -10 }}
         />
     )
 }

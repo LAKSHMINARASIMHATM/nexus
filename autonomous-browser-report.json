@@ -1,0 +1,45 @@
+{
+  "timestamp": "2026-02-02T12:34:30.093Z",
+  "summary": {
+    "totalSessions": 1,
+    "totalSearches": 1,
+    "totalClicks": 1,
+    "overallCTR": 100,
+    "engagementRate": 100,
+    "avgSessionDuration": 6245,
+    "recommendationCTR": 0
+  },
+  "personas": {
+    "casual": {
+      "count": 1,
+      "avgDuration": 6245,
+      "avgClicks": 1,
+      "avgSearches": 1,
+      "ctr": 100
+    },
+    "power": {
+      "count": 0,
+      "avgDuration": 0,
+      "avgClicks": 0,
+      "avgSearches": 0,
+      "ctr": 0
+    },
+    "research": {
+      "count": 0,
+      "avgDuration": 0,
+      "avgClicks": 0,
+      "avgSearches": 0,
+      "ctr": 0
+    }
+  },
+  "tests": [],
+  "sessions": [
+    {
+      "persona": "casual",
+      "duration": 6245,
+      "searches": 1,
+      "clicks": 1,
+      "recommendationsViewed": 0
+    }
+  ]
+}

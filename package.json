@@ -14,7 +14,11 @@
     "db:reset-crawler": "npx tsx scripts/reset-crawl-queue.ts",
     "db:optimize": "npx tsx scripts/optimize-database.ts",
     "crawler": "npx tsx scripts/crawler.ts",
-    "stats": "npx tsx scripts/count-stats.ts"
+    "stats": "npx tsx scripts/count-stats.ts",
+    "browser:auto": "npx tsx scripts/autonomous-browser.ts",
+    "browser:demo": "npx tsx scripts/autonomous-browser.ts --demo",
+    "browser:metrics": "npx tsx scripts/autonomous-browser.ts --metrics --sessions=20",
+    "browser:test": "npx tsx scripts/autonomous-browser.ts --test"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
@@ -93,6 +97,7 @@
     "zod": "3.25.76"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.1",
     "@tailwindcss/postcss": "^4.1.9",
     "@types/node": "^22",
     "@types/react": "^19",
@@ -100,6 +105,7 @@
     "dotenv": "^17.2.3",
     "eslint": "^9.39.2",
     "eslint-config-next": "^16.1.1",
+    "playwright": "^1.58.1",
     "postcss": "^8.5",
     "tailwindcss": "^4.1.9",
     "tsx": "^4.21.0",
