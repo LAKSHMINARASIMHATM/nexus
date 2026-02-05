@@ -1,4 +1,6 @@
 import pool from '../db';
+import { safetyDetectionService } from './safety-detection-service';
+
 
 export interface SearchParams {
     query: string;
@@ -26,7 +28,13 @@ export interface SearchResult {
         published_date?: string;
         language?: string;
     };
+    safety?: {
+        status: string;
+        score: number;
+        threatTypes: string[];
+    };
 }
+
 
 export interface SearchResponse {
     query: {
@@ -189,6 +197,28 @@ export class SearchService {
                     published_date: row.crawl_timestamp,
                 },
             }));
+
+            // Perform safety checks on all result URLs
+            const urls = searchResults.map(r => r.url);
+            let safetyResults: any[] = [];
+
+            try {
+                safetyResults = await safetyDetectionService.checkUrls(urls);
+            } catch (error) {
+                console.error('Error checking URL safety:', error);
+                // Continue without safety data if check fails
+            }
+
+            // Merge safety data into search results
+            searchResults.forEach((result, index) => {
+                if (safetyResults[index]) {
+                    result.safety = {
+                        status: safetyResults[index].safetyStatus,
+                        score: safetyResults[index].safetyScore,
+                        threatTypes: safetyResults[index].threatTypes,
+                    };
+                }
+            });
 
             const endTime = Date.now();
 

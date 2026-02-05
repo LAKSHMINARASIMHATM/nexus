@@ -1,6 +1,8 @@
 import { ExternalLink, Clock, Calendar, TrendingUp, Shield, Globe } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { SafetyBadge } from "@/components/search/SafetyBadge";
+
 
 // Helper function to normalize text and fix rendering issues
 const normalizeText = (text: string) => {
@@ -26,8 +28,15 @@ interface WebsitePreviewProps {
     word_count?: number;
     language?: string;
   };
+  safety?: {
+    status: 'safe' | 'warning' | 'danger' | 'unknown';
+    score: number;
+    threatTypes: string[];
+  };
   compact?: boolean;
+  onClick?: (url: string) => void;
 }
+
 
 export function WebsitePreview({
   url,
@@ -43,7 +52,7 @@ export function WebsitePreview({
 }: WebsitePreviewProps) {
   const domain = new URL(url).hostname;
   const faviconUrl = favicon || `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
-  
+
   // Normalize text to fix rendering issues
   const normalizedTitle = normalizeText(title);
   const normalizedDescription = description ? normalizeText(description) : '';
@@ -146,7 +155,7 @@ export function WebsitePreview({
           <h3 className="font-bold text-lg group-hover:text-primary transition-colors line-clamp-2">
             {normalizedTitle}
           </h3>
-          
+
           {normalizedDescription && (
             <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
               {normalizedDescription}
@@ -208,19 +217,35 @@ export function SearchResultPreview({
   category,
   trustScore,
   metadata,
-  position
+  position,
+  safety,
+  onClick
 }: WebsitePreviewProps & { position?: number }) {
   const domain = new URL(url).hostname;
   const faviconUrl = favicon || `https://www.google.com/s2/favicons?domain=${domain}&sz=32`;
-  
+
   // Normalize text to fix rendering issues
   const normalizedTitle = normalizeText(title);
   const normalizedDescription = description ? normalizeText(description) : '';
 
+  // Determine if we should show warning styling
+  const isUnsafe = safety?.status === 'danger' || safety?.status === 'warning';
+  const isDangerous = safety?.status === 'danger';
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (isUnsafe && onClick) {
+      e.preventDefault();
+      onClick(url);
+    }
+  };
+
   return (
-    <div className="group space-y-2 py-3">
+    <div className={`group space-y-2 py-3 px-3 rounded-xl transition-all ${isDangerous ? 'bg-red-500/5 border border-red-500/20 shadow-lg shadow-red-500/10 animate-pulse' :
+        isUnsafe ? 'bg-yellow-500/5 border border-yellow-500/20' :
+          'hover:bg-muted/30'
+      }`}>
       {/* Position indicator and domain */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 flex-wrap">
         {position && (
           <div className="w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold">
             {position}
@@ -245,7 +270,16 @@ export function SearchResultPreview({
             {category}
           </Badge>
         )}
-        {trustScore && (
+        {safety && (
+          <SafetyBadge
+            status={safety.status}
+            score={safety.score}
+            threatTypes={safety.threatTypes}
+            isHttps={url.startsWith('https://')}
+            showLabel={true}
+          />
+        )}
+        {trustScore && !safety && (
           <Badge variant="secondary" className="text-xs">
             Score: {trustScore}%
           </Badge>
@@ -258,8 +292,12 @@ export function SearchResultPreview({
         target="_blank"
         rel="noopener noreferrer"
         className="block group"
+        onClick={handleClick}
       >
-        <h3 className="text-xl font-semibold text-blue-600 group-hover:text-blue-700 visited:text-purple-800 transition-colors line-clamp-2">
+        <h3 className={`text-xl font-semibold transition-colors line-clamp-2 ${isDangerous ? 'text-red-600 group-hover:text-red-700' :
+            isUnsafe ? 'text-yellow-600 group-hover:text-yellow-700' :
+              'text-blue-600 group-hover:text-blue-700 visited:text-purple-800'
+          }`}>
           {normalizedTitle}
         </h3>
       </a>
@@ -286,3 +324,4 @@ export function SearchResultPreview({
     </div>
   );
 }
+

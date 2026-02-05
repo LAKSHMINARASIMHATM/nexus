@@ -10,6 +10,7 @@ import { Separator } from "@/components/ui/separator";
 import { UserMenu } from "@/components/auth/user-menu";
 import { RecommendationsWidget } from "@/components/RecommendationsWidget";
 import { SearchResultPreview } from "@/components/WebsitePreview";
+import { SafetyWarningModal } from "@/components/search/SafetyWarningModal";
 import {
     Select,
     SelectContent,
@@ -49,6 +50,10 @@ function SearchResults({ initialRecommendations }: SearchResultsClientProps) {
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [isListening, setIsListening] = useState(false);
     const [sessionId] = useState(() => `session_${Date.now()}_${Math.random().toString(36).substring(7)}`);
+
+    // Safety warning modal state
+    const [warningModalOpen, setWarningModalOpen] = useState(false);
+    const [warningUrl, setWarningUrl] = useState<{ url: string; safetyStatus: string; safetyScore: number; threatTypes: string[]; } | null>(null);
 
     const searchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const suggestionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -267,6 +272,27 @@ function SearchResults({ initialRecommendations }: SearchResultsClientProps) {
         };
     }, []);
 
+    // Handle unsafe URL click
+    const handleUnsafeUrlClick = useCallback((url: string) => {
+        const result = results?.results?.find((r: any) => r.url === url);
+        if (result?.safety) {
+            setWarningUrl({
+                url,
+                safetyStatus: result.safety.status,
+                safetyScore: result.safety.score,
+                threatTypes: result.safety.threatTypes,
+            });
+            setWarningModalOpen(true);
+        }
+    }, [results]);
+
+    // Handle proceed to unsafe URL
+    const handleProceedToUnsafeUrl = () => {
+        if (warningUrl) {
+            window.open(warningUrl.url, '_blank', 'noopener,noreferrer');
+        }
+    };
+
     return (
         <div className="bg-mesh min-h-screen transition-colors duration-300 relative font-immersive">
             <div className="fixed inset-0 bg-dots pointer-events-none"></div>
@@ -396,7 +422,9 @@ function SearchResults({ initialRecommendations }: SearchResultsClientProps) {
                                                 word_count: result.metadata.word_count,
                                                 language: result.metadata.language
                                             }}
+                                            safety={result.safety}
                                             position={index + 1}
+                                            onClick={handleUnsafeUrlClick}
                                         />
                                     ))}
                                     {results.results?.length === 0 && (
@@ -522,6 +550,22 @@ function SearchResults({ initialRecommendations }: SearchResultsClientProps) {
                     <div className="absolute inset-0 bg-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </button>
             </div>
+
+            {/* Safety Warning Modal */}
+            {warningUrl && (
+                <SafetyWarningModal
+                    isOpen={warningModalOpen}
+                    onClose={() => {
+                        setWarningModalOpen(false);
+                        setWarningUrl(null);
+                    }}
+                    url={warningUrl.url}
+                    safetyStatus={warningUrl.safetyStatus as 'safe' | 'warning' | 'danger' | 'unknown'}
+                    safetyScore={warningUrl.safetyScore}
+                    threatTypes={warningUrl.threatTypes}
+                    onProceed={handleProceedToUnsafeUrl}
+                />
+            )}
         </div>
     );
 }
